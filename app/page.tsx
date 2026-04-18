@@ -15,7 +15,7 @@ import {
   supportOptions,
   trustFacts,
   videoEmbedUrl,
-} from "@/data/site-content";
+} from "@/data/site-content"
 
 export default function Home() {
   return (
