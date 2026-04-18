@@ -12,10 +12,10 @@ export function StatusCard({ status, className }: StatusCardProps) {
       aria-label="Campaign status"
     >
       <div className="space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ember/80">
+        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-soft">
           Where we are now
         </p>
-        <h3 className="font-display text-3xl leading-tight text-ink">
+        <h3 className="text-3xl font-bold leading-tight text-ink">
           {status.phaseLabel}
         </h3>
         <p className="text-sm leading-7 text-ink-soft">{status.summary}</p>
@@ -48,7 +48,7 @@ export function StatusCard({ status, className }: StatusCardProps) {
         </div>
       </dl>
 
-      <p className="rounded-3xl border border-forest/12 bg-forest/6 px-4 py-4 text-sm leading-7 text-forest">
+      <p className="rounded-3xl border border-ink/12 bg-ink/4 px-4 py-4 text-sm leading-7 text-ink">
         {status.operationalState}
       </p>
     </div>

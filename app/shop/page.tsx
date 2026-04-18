@@ -18,10 +18,10 @@ export default function ShopPage() {
       <section className="section-shell py-10 sm:py-14 lg:py-18">
         <div className="hero-grid">
           <Reveal className="space-y-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember/80">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ink-soft">
               Wear the Mission
             </p>
-            <h1 className="max-w-4xl font-display text-5xl leading-none text-ink text-balance sm:text-6xl lg:text-7xl">
+            <h1 className="max-w-4xl text-5xl font-bold uppercase leading-none tracking-wide text-ink text-balance sm:text-6xl lg:text-7xl">
               DROP 001 - ACCESS
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-ink-soft sm:text-xl">
@@ -130,7 +130,7 @@ export default function ShopPage() {
 
       <section className="section-shell py-12 sm:py-16">
         <Reveal className="panel p-7 sm:p-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ember/80">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-soft">
             Every Purchase Has A Purpose
           </p>
           <div className="mt-4 grid gap-4 lg:grid-cols-3">

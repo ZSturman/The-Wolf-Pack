@@ -10,7 +10,7 @@ export function SiteFooter() {
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand/80">
             The Wolf Project
           </p>
-          <h2 className="font-display text-4xl leading-tight text-white sm:text-5xl">
+          <h2 className="text-4xl font-bold uppercase leading-tight tracking-wide text-white sm:text-5xl">
             When treatment exists, families deserve the chance to say yes.
           </h2>
           <p className="max-w-2xl text-sm leading-7 text-white/76">

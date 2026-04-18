@@ -46,7 +46,7 @@ export function ProductGallery({ product }: ProductGalleryProps) {
                 onClick={() => setSelectedImageId(image.id)}
                 className={`relative aspect-square overflow-hidden rounded-[1.35rem] border bg-white transition ${
                   selected
-                    ? "border-ember shadow-[0_10px_24px_rgba(141,74,47,0.16)]"
+                    ? "border-ink shadow-[0_10px_24px_rgba(0,0,0,0.12)]"
                     : "border-ink/8 hover:border-ink/24"
                 }`}
                 aria-label={`View ${image.label.toLowerCase()} image`}
@@ -65,15 +65,15 @@ export function ProductGallery({ product }: ProductGalleryProps) {
       </div>
 
       <div className="panel h-fit p-7 sm:p-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ember/80">
+        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-soft">
           Drop 001 - Access
         </p>
-        <h1 className="mt-3 font-display text-4xl leading-tight text-ink sm:text-5xl">
+        <h1 className="mt-3 text-4xl font-bold uppercase leading-tight tracking-wide text-ink sm:text-5xl">
           {product.name}
         </h1>
         <div className="mt-4 flex flex-wrap items-center gap-3">
           <p className="text-3xl font-semibold text-ink">{product.price}</p>
-          <span className="rounded-full border border-forest/12 bg-forest/6 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-forest">
+          <span className="rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-ink">
             Wear the Mission
           </span>
         </div>
@@ -100,7 +100,7 @@ export function ProductGallery({ product }: ProductGalleryProps) {
                     }}
                     className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
                       selected
-                        ? "border-ember bg-ember text-white"
+                        ? "border-ink bg-ink text-white"
                         : "border-ink/10 bg-white text-ink hover:border-ink/22"
                     }`}
                   >
@@ -137,7 +137,7 @@ export function ProductGallery({ product }: ProductGalleryProps) {
             </div>
           </div>
 
-          <div className="rounded-[1.75rem] border border-forest/12 bg-forest/6 p-4 text-sm leading-7 text-forest">
+          <div className="rounded-[1.75rem] border border-ink/12 bg-ink/4 p-4 text-sm leading-7 text-ink">
             Every purchase supports access to emergency veterinary care and
             helps build the lifeline.
           </div>

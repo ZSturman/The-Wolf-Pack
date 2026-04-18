@@ -1,22 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f0e8;
-  --foreground: #171310;
+  --background: #f5f3f0;
+  --foreground: #111111;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-cream: #f7f0e8;
-  --color-sand: #eadcc9;
-  --color-ink: #171310;
-  --color-ink-soft: #625952;
-  --color-forest: #2a473c;
-  --color-ember: #8d4a2f;
-  --color-wheat: #f3ede6;
+  --color-cream: #f5f3f0;
+  --color-sand: #e8e5e1;
+  --color-ink: #111111;
+  --color-ink-soft: #5a5a5a;
+  --color-forest: #1a1a1a;
+  --color-ember: #6b4433;
+  --color-wheat: #f0eeeb;
   --font-sans: "Manrope Variable", "Avenir Next", "Segoe UI", sans-serif;
-  --font-display: "Newsreader Variable", Georgia, serif;
 }
 
 html {
@@ -24,29 +23,13 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(circle at top, rgba(206, 174, 139, 0.28), transparent 28%),
-    linear-gradient(180deg, #fbf7f1 0%, #f7f0e8 45%, #f2ebe2 100%);
+  background: #f5f3f0;
   color: var(--foreground);
   font-family: var(--font-sans);
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    radial-gradient(rgba(26, 20, 17, 0.03) 0.6px, transparent 0.6px),
-    radial-gradient(rgba(26, 20, 17, 0.02) 0.6px, transparent 0.6px);
-  background-position: 0 0, 12px 12px;
-  background-size: 24px 24px;
-  opacity: 0.5;
-  z-index: -1;
-}
-
 ::selection {
-  background: rgba(141, 74, 47, 0.18);
+  background: rgba(17, 17, 17, 0.12);
 }
 
 a {
@@ -54,9 +37,9 @@ a {
 }
 
 .panel {
-  border: 1px solid rgba(23, 19, 16, 0.08);
-  background: rgba(255, 252, 248, 0.78);
-  box-shadow: 0 24px 60px rgba(17, 22, 20, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
   backdrop-filter: blur(18px);
   border-radius: 2rem;
 }

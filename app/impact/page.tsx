@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 const statusStyles = {
   current: "border-forest/18 bg-forest/8 text-forest",
-  next: "border-ember/18 bg-ember/8 text-ember",
+  next: "border-ink/18 bg-ink/8 text-ink",
   future: "border-ink/10 bg-white/80 text-ink-soft",
 } as const;
 
@@ -28,10 +28,10 @@ export default function ImpactPage() {
       <section className="section-shell py-10 sm:py-14 lg:py-18">
         <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-center">
           <Reveal className="space-y-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember/80">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ink-soft">
               Where We Are Now
             </p>
-            <h1 className="max-w-4xl font-display text-5xl leading-none text-ink text-balance sm:text-6xl lg:text-7xl">
+            <h1 className="max-w-4xl text-5xl font-bold uppercase leading-none tracking-wide text-ink text-balance sm:text-6xl lg:text-7xl">
               We are actively building the funding, structure, and partnerships
               needed to support emergency cases responsibly and sustainably.
             </h1>
@@ -64,7 +64,7 @@ export default function ImpactPage() {
               <article className="panel p-6 sm:p-7">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ember/80">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
                       Focus {index + 1}
                     </p>
                     <h2 className="mt-3 text-2xl font-semibold text-ink">
@@ -100,7 +100,7 @@ export default function ImpactPage() {
                   key={item.title}
                   className="rounded-[1.75rem] border border-ink/8 bg-white/78 p-5"
                 >
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ember/80">
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
                     Belief {index + 1}
                   </p>
                   <h2 className="mt-3 text-xl font-semibold text-ink">
@@ -115,7 +115,7 @@ export default function ImpactPage() {
           </Reveal>
 
           <Reveal delay={120} className="panel p-7 sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ember/80">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
               Be Part of the Promise
             </p>
             <ul className="mt-5 space-y-4 text-sm leading-7 text-ink-soft">

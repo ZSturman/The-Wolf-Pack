@@ -18,7 +18,7 @@ export function SiteHeader() {
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="flex min-w-0 items-center gap-3 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="flex min-w-0 items-center gap-3 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           <div className="relative h-12 w-12 overflow-hidden rounded-full border border-ink/8 bg-white">
             <Image
@@ -30,10 +30,10 @@ export function SiteHeader() {
             />
           </div>
           <div className="min-w-0">
-            <p className="truncate text-xs font-semibold uppercase tracking-[0.25em] text-ember/80">
+            <p className="truncate text-xs font-semibold uppercase tracking-[0.25em] text-ink-soft">
               The Wolf Project
             </p>
-            <p className="font-display text-lg text-ink sm:text-xl">
+            <p className="text-lg font-bold text-ink sm:text-xl">
               Your Dog Can Stay
             </p>
           </div>
@@ -49,7 +49,7 @@ export function SiteHeader() {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition hover:bg-white/70 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                  "rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition hover:bg-white/70 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                   active && "bg-white text-ink shadow-[0_12px_24px_rgba(15,20,18,0.06)]",
                 )}
               >

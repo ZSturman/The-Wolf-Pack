@@ -18,10 +18,10 @@ export default function OurStoryPage() {
       <section className="section-shell py-10 sm:py-14 lg:py-18">
         <div className="hero-grid">
           <Reveal className="space-y-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember/80">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ink-soft">
               Our Story
             </p>
-            <h1 className="max-w-4xl font-display text-5xl leading-none text-ink text-balance sm:text-6xl lg:text-7xl">
+            <h1 className="max-w-4xl text-5xl font-bold uppercase leading-none tracking-wide text-ink text-balance sm:text-6xl lg:text-7xl">
               Why We Exist
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-ink-soft sm:text-xl">
@@ -111,13 +111,13 @@ export default function OurStoryPage() {
                   />
                 </div>
                 <article className="panel p-6 sm:p-8">
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ember/80">
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
                     Chapter {index + 1}
                   </p>
-                  <h2 className="mt-3 font-display text-4xl leading-tight text-ink">
+                  <h2 className="mt-3 text-4xl font-bold uppercase leading-tight tracking-wide text-ink">
                     {chapter.title}
                   </h2>
-                  <p className="mt-4 text-lg leading-8 text-forest">
+                  <p className="mt-4 text-lg leading-8 text-ink">
                     {chapter.lead}
                   </p>
                   <div className="prose-tight mt-6 text-base leading-8 text-ink-soft">
@@ -134,10 +134,10 @@ export default function OurStoryPage() {
 
       <section className="section-shell py-12 sm:py-16">
         <Reveal className="panel p-7 sm:p-9">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ember/80">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-soft">
             What it led to
           </p>
-          <blockquote className="mt-4 max-w-4xl font-display text-4xl leading-tight text-ink sm:text-5xl">
+          <blockquote className="mt-4 max-w-4xl text-4xl font-bold uppercase leading-tight tracking-wide text-ink sm:text-5xl">
             If a life can be saved, access should exist.
           </blockquote>
           <p className="mt-6 max-w-3xl text-base leading-8 text-ink-soft">

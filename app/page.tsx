@@ -24,10 +24,10 @@ export default function Home() {
         <div className="hero-grid">
           <Reveal className="space-y-8">
             <div className="space-y-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember/80">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ink-soft">
                 Access to Care Lifeline Initiative under SGT Canines
               </p>
-              <h1 className="max-w-4xl font-display text-5xl leading-none text-ink text-balance sm:text-6xl lg:text-7xl">
+              <h1 className="max-w-4xl text-5xl font-bold uppercase leading-none tracking-wide text-ink text-balance sm:text-6xl lg:text-7xl">
                 When Treatment Exists But Access To Care Doesn&apos;t
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-ink-soft sm:text-xl">
@@ -93,10 +93,10 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" />
             </div>
             <div className="panel -mt-20 ml-auto max-w-md p-5 sm:-mt-24 sm:mr-6 sm:p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ember/80">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
                 This work exists because of one dog: Wolf.
               </p>
-              <h2 className="mt-3 font-display text-3xl text-ink">
+              <h2 className="mt-3 text-3xl font-bold text-ink">
                 The Problem No One Talks About
               </h2>
               <p className="mt-3 text-sm leading-7 text-ink-soft">
@@ -122,10 +122,10 @@ export default function Home() {
           {homePathways.map((pathway, index) => (
             <Reveal key={pathway.title} delay={index * 80}>
               <article className="panel flex h-full flex-col p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-ember/80">
+                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-ink-soft">
                   {pathway.eyebrow}
                 </p>
-                <h3 className="mt-4 font-display text-3xl text-ink">
+                <h3 className="mt-4 text-3xl font-bold text-ink">
                   {pathway.title}
                 </h3>
                 <p className="mt-4 flex-1 text-sm leading-7 text-ink-soft">
@@ -217,7 +217,7 @@ export default function Home() {
             {howItWorksSteps.map((step, index) => (
               <Reveal key={step.title} delay={index * 70}>
                 <article className="panel p-6">
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ember/80">
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
                     Focus {index + 1}
                   </p>
                   <h3 className="mt-3 text-2xl font-semibold text-ink">
@@ -363,7 +363,7 @@ export default function Home() {
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand/76">
                 Back The Pack
               </p>
-              <h2 className="max-w-3xl font-display text-4xl leading-tight text-white sm:text-5xl">
+              <h2 className="max-w-3xl text-4xl font-bold uppercase leading-tight tracking-wide text-white sm:text-5xl">
                 Because every family deserves the chance to hear: your dog can
                 stay.
               </h2>

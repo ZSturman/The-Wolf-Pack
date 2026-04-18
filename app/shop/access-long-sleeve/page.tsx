@@ -22,10 +22,10 @@ export default function AccessLongSleevePage() {
     <div className="pb-20 sm:pb-24">
       <section className="section-shell py-10 sm:py-14 lg:py-18">
         <Reveal className="space-y-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember/80">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ink-soft">
             Drop 001 - Access
           </p>
-          <h1 className="max-w-4xl font-display text-5xl leading-none text-ink text-balance sm:text-6xl">
+          <h1 className="max-w-4xl text-5xl font-bold uppercase leading-none tracking-wide text-ink text-balance sm:text-6xl">
             {merchProduct.name}
           </h1>
           <p className="max-w-2xl text-lg leading-8 text-ink-soft">
@@ -60,7 +60,7 @@ export default function AccessLongSleevePage() {
           </Reveal>
 
           <Reveal delay={120} className="panel p-7 sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ember/80">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
               Care + fit notes
             </p>
             <ul className="mt-5 space-y-4 text-sm leading-7 text-ink-soft">
@@ -82,7 +82,7 @@ export default function AccessLongSleevePage() {
 
       <section className="section-shell py-12 sm:py-16">
         <Reveal className="panel p-7 sm:p-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ember/80">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-soft">
             Every purchase has a purpose
           </p>
           <div className="mt-4 grid gap-4 lg:grid-cols-3">

@@ -23,10 +23,10 @@ export function SectionHeading({
         className,
       )}
     >
-      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ember/80">
+      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-soft">
         {eyebrow}
       </p>
-      <h2 className="font-display text-4xl leading-tight text-ink sm:text-5xl">
+      <h2 className="text-4xl font-bold uppercase leading-tight tracking-wide text-ink sm:text-5xl">
         {title}
       </h2>
       {intro ? (

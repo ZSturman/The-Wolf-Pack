@@ -22,10 +22,10 @@ export default function HowItWorksPage() {
       <section className="section-shell py-10 sm:py-14 lg:py-18">
         <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-center">
           <Reveal className="space-y-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember/80">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ink-soft">
               Access to Care
             </p>
-            <h1 className="max-w-4xl font-display text-5xl leading-none text-ink text-balance sm:text-6xl lg:text-7xl">
+            <h1 className="max-w-4xl text-5xl font-bold uppercase leading-none tracking-wide text-ink text-balance sm:text-6xl lg:text-7xl">
               A lifeline when treatment exists - but access to care does not.
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-ink-soft sm:text-xl">
@@ -52,7 +52,7 @@ export default function HowItWorksPage() {
           {howItWorksSteps.map((step, index) => (
             <Reveal key={step.title} delay={index * 80}>
               <article className="panel h-full p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ember/80">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
                   Focus {index + 1}
                 </p>
                 <h2 className="mt-4 text-2xl font-semibold text-ink">
@@ -108,7 +108,7 @@ export default function HowItWorksPage() {
                   key={principle}
                   className="rounded-[1.75rem] border border-ink/8 bg-white/78 p-5"
                 >
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ember/80">
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
                     Principle {index + 1}
                   </p>
                   <p className="mt-3 text-sm leading-7 text-ink-soft">
@@ -119,10 +119,10 @@ export default function HowItWorksPage() {
             </div>
           </Reveal>
           <Reveal delay={120} className="panel p-7 sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ember/80">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
               Where We Are Now
             </p>
-            <h2 className="mt-3 font-display text-4xl leading-tight text-ink">
+            <h2 className="mt-3 text-4xl font-bold uppercase leading-tight tracking-wide text-ink">
               We are building something that steps in before it&apos;s too late.
             </h2>
             <p className="mt-5 text-base leading-8 text-ink-soft">

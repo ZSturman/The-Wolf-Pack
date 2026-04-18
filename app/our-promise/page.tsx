@@ -25,10 +25,10 @@ export default function OurPromisePage() {
       <section className="section-shell py-10 sm:py-14 lg:py-18">
         <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-center">
           <Reveal className="space-y-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember/80">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ink-soft">
               Our Promise
             </p>
-            <h1 className="max-w-4xl font-display text-5xl leading-none text-ink text-balance sm:text-6xl lg:text-7xl">
+            <h1 className="max-w-4xl text-5xl font-bold uppercase leading-none tracking-wide text-ink text-balance sm:text-6xl lg:text-7xl">
               The Promise We Keep
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-ink-soft sm:text-xl">
@@ -59,7 +59,7 @@ export default function OurPromisePage() {
           {promiseCommitments.map((commitment, index) => (
             <Reveal key={commitment} delay={index * 60}>
               <article className="panel h-full p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ember/80">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
                   Commitment {index + 1}
                 </p>
                 <p className="mt-4 text-lg leading-8 text-ink">{commitment}</p>
@@ -89,10 +89,10 @@ export default function OurPromisePage() {
           </Reveal>
 
           <Reveal delay={120} className="panel p-7 sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ember/80">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
               Where We Are Now
             </p>
-            <h2 className="mt-3 font-display text-4xl leading-tight text-ink">
+            <h2 className="mt-3 text-4xl font-bold uppercase leading-tight tracking-wide text-ink">
               We are actively building the funding, structure, and partnerships
               needed to support emergency cases responsibly and sustainably.
             </h2>

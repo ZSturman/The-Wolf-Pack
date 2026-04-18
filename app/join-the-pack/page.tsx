@@ -26,10 +26,10 @@ export default function JoinThePackPage() {
       <section className="section-shell py-10 sm:py-14 lg:py-18">
         <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-center">
           <Reveal className="space-y-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember/80">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ink-soft">
               Join The Pack
             </p>
-            <h1 className="max-w-4xl font-display text-5xl leading-none text-ink text-balance sm:text-6xl lg:text-7xl">
+            <h1 className="max-w-4xl text-5xl font-bold uppercase leading-none tracking-wide text-ink text-balance sm:text-6xl lg:text-7xl">
               Be Part of the Promise
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-ink-soft sm:text-xl">
@@ -58,12 +58,12 @@ export default function JoinThePackPage() {
 
       <section className="section-shell py-12 sm:py-16">
         <Reveal className="panel p-7 sm:p-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ember/80">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-soft">
             Back The Pack
           </p>
           <div className="mt-4 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
             <div>
-              <h2 className="font-display text-5xl leading-tight text-ink sm:text-6xl">
+              <h2 className="text-5xl font-bold uppercase leading-tight tracking-wide text-ink sm:text-6xl">
                 Because every family deserves the chance to hear: your dog can
                 stay.
               </h2>
@@ -72,7 +72,7 @@ export default function JoinThePackPage() {
                 because every family deserves the chance to say yes.
               </p>
             </div>
-            <div className="rounded-[1.8rem] border border-forest/12 bg-forest/6 p-5 text-sm leading-7 text-forest">
+            <div className="rounded-[1.8rem] border border-ink/12 bg-ink/4 p-5 text-sm leading-7 text-ink">
               The Wolf Project stands with families in the moments that decide
               everything, so they can hear the words: your dog can stay.
             </div>
@@ -92,7 +92,7 @@ export default function JoinThePackPage() {
           {supportOptions.map((option, index) => (
             <Reveal key={option.label} delay={index * 60}>
               <article className="panel flex h-full flex-col p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ember/80">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
                   {option.amount ?? "Support path"}
                 </p>
                 <h2 className="mt-3 text-2xl font-semibold text-ink">
@@ -117,10 +117,10 @@ export default function JoinThePackPage() {
       <section className="section-shell py-12 sm:py-16">
         <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-center">
           <Reveal className="panel p-7 sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ember/80">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink-soft">
               Monthly support
             </p>
-            <h2 className="mt-3 font-display text-4xl leading-tight text-ink">
+            <h2 className="mt-3 text-4xl font-bold uppercase leading-tight tracking-wide text-ink">
               Help keep the lifeline growing month after month.
             </h2>
             <p className="mt-5 text-base leading-8 text-ink-soft">
@@ -162,7 +162,7 @@ export default function JoinThePackPage() {
               />
             </div>
             <div className="p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ember/80">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
                 Wear the Mission
               </p>
               <h2 className="mt-3 text-2xl font-semibold text-ink">

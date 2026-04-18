@@ -13,7 +13,7 @@ export function FAQList({ items }: FAQListProps) {
             <span>{item.question}</span>
             <span
               aria-hidden="true"
-              className="text-2xl text-ember transition group-open:rotate-45"
+              className="text-2xl text-ink-soft transition group-open:rotate-45"
             >
               +
             </span>

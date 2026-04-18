@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "@fontsource-variable/manrope";
-import "@fontsource-variable/newsreader";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
