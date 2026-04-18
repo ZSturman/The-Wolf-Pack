@@ -1,0 +1,87 @@
+[
+  {
+    "id": "ydcs-logo",
+    "localSrc": "/assets/brand/ydcs-logo.png",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/D37DAEEE-B73F-4467-B679-BFE2B36EABBF.png?v=1775004673"
+  },
+  {
+    "id": "wolf-hero-1",
+    "localSrc": "/assets/story/wolf-hero-1.jpg",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/IMG_2732.heic?v=1772929372"
+  },
+  {
+    "id": "wolf-hero-2",
+    "localSrc": "/assets/story/wolf-hero-2.jpg",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/IMG_4520.heic?v=1773195893"
+  },
+  {
+    "id": "merch-black-front",
+    "localSrc": "/assets/merch/access-black-front.jpg",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/1792073295576170125_2048.jpg?v=1775694478"
+  },
+  {
+    "id": "merch-white-front",
+    "localSrc": "/assets/merch/access-white-front.jpg",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/8240973872544980921_2048.jpg?v=1775694485"
+  },
+  {
+    "id": "merch-black-detail-1",
+    "localSrc": "/assets/merch/access-black-detail-1.jpg",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/1081723117014861581_2048.jpg?v=1775694492"
+  },
+  {
+    "id": "merch-white-detail-1",
+    "localSrc": "/assets/merch/access-white-detail-1.jpg",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/3768050570254703125_2048.jpg?v=1775694500"
+  },
+  {
+    "id": "merch-black-detail-2",
+    "localSrc": "/assets/merch/access-black-detail-2.jpg",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/7955273810331129879_2048.jpg?v=1775694506"
+  },
+  {
+    "id": "merch-white-detail-2",
+    "localSrc": "/assets/merch/access-white-detail-2.jpg",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/8221328066234607194_2048.jpg?v=1775694512"
+  },
+  {
+    "id": "merch-black-detail-3",
+    "localSrc": "/assets/merch/access-black-detail-3.jpg",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/3881453295432908615_2048.jpg?v=1775694519"
+  },
+  {
+    "id": "merch-white-detail-3",
+    "localSrc": "/assets/merch/access-white-detail-3.jpg",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/17223999938358402880_2048.jpg?v=1775694525"
+  },
+  {
+    "id": "merch-black-detail-4",
+    "localSrc": "/assets/merch/access-black-detail-4.jpg",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/5117877214596904030_2048.jpg?v=1775694531"
+  },
+  {
+    "id": "merch-white-detail-4",
+    "localSrc": "/assets/merch/access-white-detail-4.jpg",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/7271515452128833557_2048.jpg?v=1775694537"
+  },
+  {
+    "id": "trust-bloat",
+    "localSrc": "/assets/trust/bloat-gdv.png",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/bloat-gdv-in-dog.png?v=1774052543"
+  },
+  {
+    "id": "trust-pyometra",
+    "localSrc": "/assets/trust/pyometra.png",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/pyometra-in-dogs.png?v=1774052881"
+  },
+  {
+    "id": "trust-toxic-ingestion",
+    "localSrc": "/assets/trust/toxic-ingestion.png",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/toxic-ingestions-to-dogs.png?v=1774052952"
+  },
+  {
+    "id": "trust-urinary-blockage",
+    "localSrc": "/assets/trust/urinary-blockage.png",
+    "sourceUrl": "https://yourdogcanstay.com/cdn/shop/files/urinary-blockage-in-dogs.png?v=1774053067"
+  }
+]
