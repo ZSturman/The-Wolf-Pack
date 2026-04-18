@@ -84,7 +84,7 @@ export default function AdminDashboard() {
           className="rounded-xl border border-ink/8 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
         >
           <p className="text-3xl font-bold tabular-nums text-ink">9</p>
-          <p className="mt-1 text-sm text-ink-soft">Singletons</p>
+          <p className="mt-1 text-sm text-ink-soft">Site Settings</p>
         </Link>
       </div>
 

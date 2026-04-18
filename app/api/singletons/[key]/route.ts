@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
-import { getSingleton, setSingleton } from "@/lib/db/singletons";
+import { setSingleton } from "@/lib/db/singletons";
 import { verifyAuthToken } from "@/lib/auth/verify-token";
+import { getAdminSingletonData } from "@/lib/site-content";
 
 const VALID_KEYS = [
   "donationProgress",
@@ -21,7 +22,7 @@ export async function GET(_request: Request, context: Context) {
   if (!VALID_KEYS.includes(key)) {
     return NextResponse.json({ error: "Invalid singleton key" }, { status: 400 });
   }
-  const data = await getSingleton(key);
+  const data = await getAdminSingletonData(key);
   return NextResponse.json(data ?? {});
 }
 

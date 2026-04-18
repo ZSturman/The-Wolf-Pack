@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/lib/auth/auth-context";
 import { FormField, inputClass, textareaClass } from "@/components/admin/form-field";
 import { SaveButton } from "@/components/admin/save-button";
@@ -28,21 +28,33 @@ export default function AdminSettingsPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState<"idle" | "saving" | "success" | "error">("idle");
 
-  const loadTab = useCallback(async (key: TabKey) => {
-    setLoading(true);
-    try {
-      const res = await fetch(`/api/singletons/${key}`);
-      const json = await res.json();
-      setData(json ?? {});
-    } catch {
-      setData({});
-    }
-    setLoading(false);
-  }, []);
-
   useEffect(() => {
-    loadTab(activeTab);
-  }, [activeTab, loadTab]);
+    let cancelled = false;
+
+    async function loadTab() {
+      try {
+        const res = await fetch(`/api/singletons/${activeTab}`);
+        const json = await res.json();
+        if (!cancelled) {
+          setData(json ?? {});
+        }
+      } catch {
+        if (!cancelled) {
+          setData({});
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
+      }
+    }
+
+    void loadTab();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [activeTab]);
 
   async function handleSave() {
     setSaving("saving");
@@ -97,7 +109,12 @@ export default function AdminSettingsPage() {
         {TABS.map((tab) => (
           <button
             key={tab.key}
-            onClick={() => setActiveTab(tab.key)}
+            onClick={() => {
+              if (tab.key !== activeTab) {
+                setLoading(true);
+                setActiveTab(tab.key);
+              }
+            }}
             className={cn(
               "rounded-t-lg px-3 py-2 text-sm font-medium transition-colors",
               activeTab === tab.key
@@ -115,7 +132,7 @@ export default function AdminSettingsPage() {
       ) : (
         <div className="mt-6 max-w-2xl space-y-6">
           {activeTab === "siteSettings" && (
-            <SiteSettingsForm data={data} str={str} arr={arr} update={update} />
+            <SiteSettingsForm str={str} arr={arr} update={update} />
           )}
           {activeTab === "donationProgress" && (
             <DonationProgressForm str={str} num={num} update={update} />
@@ -148,7 +165,6 @@ function SiteSettingsForm({
   arr,
   update,
 }: {
-  data: Record<string, unknown>;
   str: (f: string) => string;
   arr: <T>(f: string) => T[];
   update: (f: string, v: unknown) => void;
@@ -169,6 +185,15 @@ function SiteSettingsForm({
           value={str("operationalState")}
           onChange={(e) => update("operationalState", e.target.value)}
           className={inputClass()}
+        />
+      </FormField>
+      <FormField label="Status Summary" htmlFor="summary">
+        <textarea
+          id="summary"
+          value={str("summary")}
+          onChange={(e) => update("summary", e.target.value)}
+          className={textareaClass()}
+          rows={4}
         />
       </FormField>
       <RepeaterField
@@ -271,6 +296,14 @@ function DonationProgressForm({
             className={inputClass()}
           />
         </FormField>
+        <FormField label="API Key" htmlFor="apiKey">
+          <input
+            id="apiKey"
+            value={str("apiKey")}
+            onChange={(e) => update("apiKey", e.target.value)}
+            className={inputClass()}
+          />
+        </FormField>
       </div>
     </>
   );
@@ -307,12 +340,74 @@ function ApplicationConfigForm({
           rows={3}
         />
       </FormField>
-      <FormField label="Form URL" htmlFor="formUrl">
+      <div className="grid grid-cols-2 gap-4">
+        <FormField label="Closed Title" htmlFor="closedTitle">
+          <input
+            id="closedTitle"
+            value={str("closedTitle")}
+            onChange={(e) => update("closedTitle", e.target.value)}
+            className={inputClass()}
+          />
+        </FormField>
+        <FormField label="Open Title" htmlFor="openTitle">
+          <input
+            id="openTitle"
+            value={str("openTitle")}
+            onChange={(e) => update("openTitle", e.target.value)}
+            className={inputClass()}
+          />
+        </FormField>
+      </div>
+      <FormField label="Closed Intro" htmlFor="closedIntro">
+        <textarea
+          id="closedIntro"
+          value={str("closedIntro")}
+          onChange={(e) => update("closedIntro", e.target.value)}
+          className={textareaClass()}
+          rows={3}
+        />
+      </FormField>
+      <FormField label="Open Intro" htmlFor="openIntro">
+        <textarea
+          id="openIntro"
+          value={str("openIntro")}
+          onChange={(e) => update("openIntro", e.target.value)}
+          className={textareaClass()}
+          rows={3}
+        />
+      </FormField>
+      <FormField label="Application Form URL" htmlFor="formUrl">
         <input
           id="formUrl"
           value={str("formUrl")}
           onChange={(e) => update("formUrl", e.target.value)}
           className={inputClass()}
+        />
+      </FormField>
+      <FormField label="Notify Signup Heading" htmlFor="notifyHeading">
+        <input
+          id="notifyHeading"
+          value={str("notifyHeading")}
+          onChange={(e) => update("notifyHeading", e.target.value)}
+          className={inputClass()}
+        />
+      </FormField>
+      <FormField label="Notify Signup Description" htmlFor="notifyDescription">
+        <textarea
+          id="notifyDescription"
+          value={str("notifyDescription")}
+          onChange={(e) => update("notifyDescription", e.target.value)}
+          className={textareaClass()}
+          rows={3}
+        />
+      </FormField>
+      <FormField label="Support Prompt" htmlFor="supportPrompt">
+        <textarea
+          id="supportPrompt"
+          value={str("supportPrompt")}
+          onChange={(e) => update("supportPrompt", e.target.value)}
+          className={textareaClass()}
+          rows={2}
         />
       </FormField>
     </>
@@ -531,6 +626,8 @@ function StructuredEditor({
   data: Record<string, unknown>;
   onChange: (data: Record<string, unknown>) => void;
 }) {
+  const fields = Object.entries(data);
+
   function updateField(field: string, value: unknown) {
     onChange({ ...data, [field]: value });
   }
@@ -540,7 +637,11 @@ function StructuredEditor({
       <p className="text-xs text-ink-soft">
         Edit the content fields below. Changes are saved when you click Save.
       </p>
-      {Object.entries(data).map(([key, value]) => {
+      {fields.length === 0 ? (
+        <div className="rounded-lg border border-dashed border-ink/15 bg-white px-4 py-5 text-sm text-ink-soft">
+          This section does not expose editable fields in the demo app yet.
+        </div>
+      ) : fields.map(([key, value]) => {
         const label = camelToLabel(key);
 
         // String

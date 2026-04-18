@@ -37,6 +37,59 @@ function pickArray<T>(
   return value && value.length > 0 ? Array.from(value) : Array.from(fallback);
 }
 
+const defaultFundAllocation: SiteSettings["fundAllocation"] = [
+  {
+    category: "Emergency Veterinary Care",
+    description:
+      "Diagnostics, procedures, surgery, hospitalization, medications, and follow-up care for approved cases.",
+    percentage: 85,
+  },
+  {
+    category: "Operations & Partnerships",
+    description:
+      "Veterinary network development, case management systems, and operational infrastructure.",
+    percentage: 10,
+  },
+  {
+    category: "Education & Outreach",
+    description:
+      "Community resources, prevention education, and awareness campaigns.",
+    percentage: 5,
+  },
+];
+
+const defaultDonationProgress: DonationProgress = {
+  goalUsd: defaultCampaignStatus.launchGoalUsd,
+  raisedUsd: 0,
+  lastUpdated: null,
+  source: "manual",
+  apiProvider: "",
+  apiKey: "",
+};
+
+const defaultApplicationConfig: ApplicationConfig = {
+  accepting: false,
+  message:
+    "The Access to Care Lifeline is not yet accepting applications. We are building the funding, structure, and partnerships needed to support emergency cases responsibly and sustainably.",
+  formUrl: "",
+  closedTitle: "Applications Are Not Yet Open",
+  closedIntro:
+    "We're building the lifeline responsibly. When we open applications, we want to ensure we can fully stand behind every case we accept.",
+  openTitle: "Submit a Case",
+  openIntro:
+    "If your dog is facing an emergency and you need help accessing veterinary care, you can submit a case for review.",
+  notifyHeading: "Be the First to Know",
+  notifyDescription: "Sign up to be notified when applications open.",
+  supportPrompt: "In the meantime, you can help us reach our goal:",
+};
+
+const defaultSiteSettings: SiteSettings = {
+  phaseLabel: defaultCampaignStatus.phaseLabel,
+  operationalState: defaultCampaignStatus.operationalState,
+  summary: defaultCampaignStatus.summary,
+  fundAllocation: defaultFundAllocation,
+};
+
 const defaultHomeContent: HomeContent = {
   heroEyebrow: "Access to Care Lifeline Initiative under SGT Canines",
   heroTitle: "When Treatment Exists But Access To Care Doesn't",
@@ -258,21 +311,92 @@ const defaultShopContent: ShopContent = {
   ],
 };
 
+export async function getDonationProgress(): Promise<DonationProgress> {
+  const data = await getSingleton<DonationProgress>("donationProgress");
+
+  return {
+    goalUsd: data?.goalUsd ?? defaultDonationProgress.goalUsd,
+    raisedUsd: data?.raisedUsd ?? defaultDonationProgress.raisedUsd,
+    lastUpdated: data?.lastUpdated ?? defaultDonationProgress.lastUpdated,
+    source: data?.source ?? defaultDonationProgress.source,
+    apiProvider: data?.apiProvider ?? defaultDonationProgress.apiProvider,
+    apiKey: data?.apiKey ?? defaultDonationProgress.apiKey,
+  };
+}
+
+export async function getApplicationConfig(): Promise<ApplicationConfig> {
+  const data = await getSingleton<ApplicationConfig>("applicationConfig");
+
+  return {
+    accepting: data?.accepting ?? defaultApplicationConfig.accepting,
+    message: data?.message ?? defaultApplicationConfig.message,
+    formUrl: data?.formUrl ?? defaultApplicationConfig.formUrl,
+    closedTitle: data?.closedTitle ?? defaultApplicationConfig.closedTitle,
+    closedIntro: data?.closedIntro ?? defaultApplicationConfig.closedIntro,
+    openTitle: data?.openTitle ?? defaultApplicationConfig.openTitle,
+    openIntro: data?.openIntro ?? defaultApplicationConfig.openIntro,
+    notifyHeading:
+      data?.notifyHeading ?? defaultApplicationConfig.notifyHeading,
+    notifyDescription:
+      data?.notifyDescription ?? defaultApplicationConfig.notifyDescription,
+    supportPrompt:
+      data?.supportPrompt ?? defaultApplicationConfig.supportPrompt,
+  };
+}
+
+export async function getSiteSettings(): Promise<SiteSettings> {
+  const data = await getSingleton<SiteSettings>("siteSettings");
+
+  return {
+    phaseLabel: data?.phaseLabel ?? defaultSiteSettings.phaseLabel,
+    operationalState:
+      data?.operationalState ?? defaultSiteSettings.operationalState,
+    summary: data?.summary ?? defaultSiteSettings.summary,
+    fundAllocation: pickArray(
+      data?.fundAllocation,
+      defaultSiteSettings.fundAllocation,
+    ),
+  };
+}
+
+export async function getAdminSingletonData(key: string) {
+  switch (key) {
+    case "siteSettings":
+      return getSiteSettings();
+    case "donationProgress":
+      return getDonationProgress();
+    case "applicationConfig":
+      return getApplicationConfig();
+    case "homeContent":
+      return getHomeContent();
+    case "storyContent":
+      return getStoryContent();
+    case "processContent":
+      return getProcessContent();
+    case "trustContent":
+      return getTrustContent();
+    case "donationContent":
+      return getDonationContent();
+    case "shopContent":
+      return getShopContent();
+    default:
+      return null;
+  }
+}
+
 export async function getCampaignStatus(): Promise<CampaignStatus> {
   const [applicationConfig, siteSettings, donationProgress] = await Promise.all([
-    getSingleton<ApplicationConfig>("applicationConfig"),
-    getSingleton<SiteSettings>("siteSettings"),
-    getSingleton<DonationProgress>("donationProgress"),
+    getApplicationConfig(),
+    getSiteSettings(),
+    getDonationProgress(),
   ]);
 
   return {
-    phaseLabel: siteSettings?.phaseLabel ?? defaultCampaignStatus.phaseLabel,
-    launchGoalUsd: donationProgress?.goalUsd ?? defaultCampaignStatus.launchGoalUsd,
-    operationalState:
-      siteSettings?.operationalState ?? defaultCampaignStatus.operationalState,
-    acceptingApplications:
-      applicationConfig?.accepting ?? defaultCampaignStatus.acceptingApplications,
-    summary: siteSettings?.summary ?? defaultCampaignStatus.summary,
+    phaseLabel: siteSettings.phaseLabel,
+    launchGoalUsd: donationProgress.goalUsd,
+    operationalState: siteSettings.operationalState,
+    acceptingApplications: applicationConfig.accepting,
+    summary: siteSettings.summary,
   };
 }
 
