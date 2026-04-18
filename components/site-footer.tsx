@@ -1,8 +1,12 @@
 import Link from "next/link";
-import { campaignStatus, navigation, socialLinks, supportOptions } from "@/data/site-content";
+import { navigation, socialLinks, supportOptions } from "@/data/site-content";
+import { getCampaignStatus } from "@/lib/site-content";
 import { ButtonLink } from "./button-link";
+import { EmailSignup } from "./email-signup";
 
-export function SiteFooter() {
+export async function SiteFooter() {
+  const campaignStatus = await getCampaignStatus();
+
   return (
     <footer className="border-t border-ink/6 bg-forest text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-6 lg:grid-cols-[1.3fr_0.8fr_0.8fr] lg:px-10">
@@ -76,6 +80,9 @@ export function SiteFooter() {
             Join the Wolf Pack community and follow along as we build the
             lifeline.
           </p>
+          <div className="mt-6">
+            <EmailSignup compact dark heading="Stay Updated" />
+          </div>
         </div>
       </div>
     </footer>

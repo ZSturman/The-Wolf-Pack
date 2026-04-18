@@ -6,11 +6,12 @@ import { SectionHeading } from "@/components/section-heading";
 import { StatusCard } from "@/components/status-card";
 import { assetIndex } from "@/data/assets";
 import {
-  campaignStatus,
   merchProduct,
-  monthlySupportNote,
   supportOptions,
 } from "@/data/site-content";
+import { getCampaignStatus, getDonationContent } from "@/lib/site-content";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Join The Pack",
@@ -18,7 +19,11 @@ export const metadata: Metadata = {
     "Back the Pack, be part of the promise, and help create access to care when it's needed most.",
 };
 
-export default function JoinThePackPage() {
+export default async function JoinThePackPage() {
+  const [campaignStatus, donationContent] = await Promise.all([
+    getCampaignStatus(),
+    getDonationContent(),
+  ]);
   const monthlySupport = supportOptions[1];
 
   return (
@@ -30,16 +35,13 @@ export default function JoinThePackPage() {
               Join The Pack
             </p>
             <h1 className="max-w-4xl text-5xl font-bold uppercase leading-none tracking-wide text-ink text-balance sm:text-6xl lg:text-7xl">
-              Be Part of the Promise
+              {donationContent.joinHeroTitle}
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-ink-soft sm:text-xl">
-              When emergency veterinary costs stand between a dog and the
-              treatment that could save them, families are often forced into
-              devastating decisions.
+              {donationContent.joinHeroIntro}
             </p>
             <p className="max-w-2xl text-base leading-8 text-ink-soft">
-              Your support helps create access to care when it&apos;s needed
-              most. Together, we can give more dogs the chance to go home.
+              {donationContent.joinHeroBody}
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={supportOptions[0].href} external>
@@ -64,17 +66,14 @@ export default function JoinThePackPage() {
           <div className="mt-4 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
             <div>
               <h2 className="text-5xl font-bold uppercase leading-tight tracking-wide text-ink sm:text-6xl">
-                Because every family deserves the chance to hear: your dog can
-                stay.
+                {donationContent.joinBannerTitle}
               </h2>
               <p className="mt-4 max-w-xl text-base leading-8 text-ink-soft">
-                This only works if people choose to stand in that space -
-                because every family deserves the chance to say yes.
+                {donationContent.joinBannerDescription}
               </p>
             </div>
             <div className="rounded-[1.8rem] border border-ink/12 bg-ink/4 p-5 text-sm leading-7 text-ink">
-              The Wolf Project stands with families in the moments that decide
-              everything, so they can hear the words: your dog can stay.
+              {donationContent.joinBannerNote}
             </div>
           </div>
         </Reveal>
@@ -84,8 +83,8 @@ export default function JoinThePackPage() {
         <Reveal>
           <SectionHeading
             eyebrow="Ways to Help"
-            title="Choose the path that feels right for you."
-            intro="Give now, support monthly, learn about access to care, or wear the mission."
+            title={donationContent.joinWaysTitle}
+            intro={donationContent.joinWaysIntro}
           />
         </Reveal>
         <div className="mt-8 grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
@@ -121,14 +120,13 @@ export default function JoinThePackPage() {
               Monthly support
             </p>
             <h2 className="mt-3 text-4xl font-bold uppercase leading-tight tracking-wide text-ink">
-              Help keep the lifeline growing month after month.
+              {donationContent.monthlySupportTitle}
             </h2>
             <p className="mt-5 text-base leading-8 text-ink-soft">
-              {monthlySupportNote}
+              {donationContent.monthlySupportIntro}
             </p>
             <p className="mt-4 text-sm leading-7 text-ink-soft">
-              Some supporters step in once. Others help make sure the work
-              keeps moving with steady support.
+              {donationContent.monthlySupportNote}
             </p>
             <ButtonLink href={monthlySupport.href} external className="mt-8">
               {monthlySupport.label}
@@ -178,15 +176,11 @@ export default function JoinThePackPage() {
           <Reveal delay={120}>
             <SectionHeading
               eyebrow="Wear the Mission"
-              title="This is more than a shirt. It&apos;s a statement."
-              intro="Wolf&apos;s story changed everything. But access to care gave him a second chance."
+              title={donationContent.merchTitle}
+              intro={donationContent.merchIntro}
             />
             <div className="prose-tight mt-6 max-w-2xl text-base leading-8 text-ink-soft">
-              <p>
-                This piece represents something bigger - a movement to ensure
-                families don&apos;t have to choose between their dog&apos;s life
-                and the cost of care.
-              </p>
+              <p>{donationContent.merchBody}</p>
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/shop" variant="secondary">

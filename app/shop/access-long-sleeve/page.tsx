@@ -4,6 +4,9 @@ import { ProductGallery } from "@/components/product-gallery";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { merchProduct } from "@/data/site-content";
+import { getShopContent } from "@/lib/site-content";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Access Long Sleeve",
@@ -11,13 +14,9 @@ export const metadata: Metadata = {
     "The Wolf Project long sleeve tee inspired by Wolf's story and created to support access to emergency veterinary care.",
 };
 
-const purchaseReasons = [
-  "This is more than a shirt. It's a statement.",
-  "Every purchase supports our mission to expand access to emergency veterinary care and prevent financial euthanasia.",
-  "Wear the mission. Be part of the movement. Back the pack.",
-];
+export default async function AccessLongSleevePage() {
+  const shopContent = await getShopContent();
 
-export default function AccessLongSleevePage() {
   return (
     <div className="pb-20 sm:pb-24">
       <section className="section-shell py-10 sm:py-14 lg:py-18">
@@ -29,11 +28,10 @@ export default function AccessLongSleevePage() {
             {merchProduct.name}
           </h1>
           <p className="max-w-2xl text-lg leading-8 text-ink-soft">
-            This is more than a shirt. It&apos;s a statement.
+            {shopContent.accessHeroIntro}
           </p>
           <p className="max-w-2xl text-base leading-8 text-ink-soft">
-            Wolf&apos;s story changed everything. But access to care gave him a
-            second chance. And not every dog gets that.
+            {shopContent.accessHeroBody}
           </p>
         </Reveal>
       </section>
@@ -49,8 +47,8 @@ export default function AccessLongSleevePage() {
           <Reveal>
             <SectionHeading
               eyebrow="Product story"
-              title="This piece represents something bigger."
-              intro="A movement to ensure families don&apos;t have to choose between their dog&apos;s life and the cost of care."
+              title={shopContent.productStoryTitle}
+              intro={shopContent.productStoryIntro}
             />
             <div className="prose-tight mt-6 max-w-2xl text-base leading-8 text-ink-soft">
               {merchProduct.story.map((paragraph) => (
@@ -86,7 +84,7 @@ export default function AccessLongSleevePage() {
             Every purchase has a purpose
           </p>
           <div className="mt-4 grid gap-4 lg:grid-cols-3">
-            {purchaseReasons.map((reason) => (
+            {shopContent.purchaseReasons.map((reason) => (
               <article
                 key={reason}
                 className="rounded-[1.75rem] border border-ink/8 bg-white/78 p-5"

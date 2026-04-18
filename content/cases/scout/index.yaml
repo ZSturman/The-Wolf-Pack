@@ -1,0 +1,26 @@
+name: Scout
+breed: German shepherd mix
+age: 3 years old
+summary: >-
+  Scout's emergency hospitalization is fully funded, and the focus has shifted
+  to recovery, medications, and getting him home safely.
+heroImage: /assets/story/wolf-hero-1.jpg
+gallery: []
+goalUsd: 4800
+raisedUsd: 4800
+status: funded
+featured: false
+donationLink: ''
+veterinaryPartner: Riverbend Specialty and Emergency
+updates:
+  - date: '2026-04-10'
+    title: Scout was admitted for severe dehydration and GI distress
+    body: >-
+      The care team moved quickly to stabilize Scout and rule out surgical
+      complications.
+  - date: '2026-04-16'
+    title: Scout's goal is fully funded
+    body: >-
+      The initial hospitalization and immediate follow-up are covered. The next
+      phase is monitoring his recovery and discharge plan.
+createdAt: '2026-04-10'

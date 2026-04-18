@@ -1,0 +1,81 @@
+donateHeroTitle: Because Every Family Deserves the Chance to Say Yes
+donateHeroIntro: >-
+  Your support helps create access to care when it's needed most. Every dollar
+  goes toward building the lifeline.
+progressLabel: Access to Care Lifeline Goal
+oneTimeTitle: Founding Donor
+oneTimeDescription: >-
+  One-time contribution to the Access to Care Lifeline general fund. Every
+  dollar goes directly toward building the lifeline.
+oneTimeButtonLabel: Donate Now
+monthlyTitle: Pack Leader
+monthlyDescription: >-
+  Sustaining monthly support keeps the lifeline growing. Your recurring gift
+  means we can plan ahead and help more dogs.
+monthlyButtonLabel: Join Monthly
+activeCasesTitle: Active Cases
+activeCasesIntro: >-
+  Donate directly to a dog in need. Every case page shows their story, their
+  goal, and how close they are to getting care.
+tiersTitle: Every Level Moves the Needle
+tiersIntro: >-
+  As a founding donor, your name becomes part of the story we're building.
+  Recognition levels reflect the impact of your commitment.
+tiers:
+  - name: Pack Supporter
+    amount: $50
+    note: Helps cover initial consultation costs
+  - name: Care Champion
+    amount: $250
+    note: Funds emergency diagnostics for one dog
+  - name: Founding Pack Member
+    amount: $500
+    note: Recognized as a founding supporter
+  - name: Lifeline Builder
+    amount: $1,000
+    note: Helps fund a significant portion of a case
+  - name: Guardian Circle
+    amount: $2,500
+    note: Named in our Transparency Report
+  - name: Legacy Partner
+    amount: $5,000+
+    note: Founding partner with direct impact recognition
+tiersButtonLabel: Become a Founding Donor
+emailHeading: Stay in the Loop
+emailDescription: >-
+  Get updates on our progress, new cases, and how your support is making a
+  difference.
+trustText: >-
+  The Wolf Project is an initiative under SGT Canines, a 501(c)(3)
+  non-profit organization. EIN: 99-4415153. All donations are tax deductible.
+  We publish how every dollar is allocated on our Transparency page.
+joinHeroTitle: Be Part of the Promise
+joinHeroIntro: >-
+  When emergency veterinary costs stand between a dog and the treatment that
+  could save them, families are often forced into devastating decisions.
+joinHeroBody: >-
+  Your support helps create access to care when it's needed most. Together, we
+  can give more dogs the chance to go home.
+joinBannerTitle: 'Because every family deserves the chance to hear: your dog can stay.'
+joinBannerDescription: >-
+  This only works if people choose to stand in that space - because every
+  family deserves the chance to say yes.
+joinBannerNote: >-
+  The Wolf Project stands with families in the moments that decide everything,
+  so they can hear the words: your dog can stay.
+joinWaysTitle: Choose the path that feels right for you.
+joinWaysIntro: >-
+  Give now, support monthly, learn about access to care, or wear the mission.
+monthlySupportTitle: Help keep the lifeline growing month after month.
+monthlySupportIntro: >-
+  Some supporters give once. Others help keep the lifeline growing month after
+  month.
+monthlySupportNote: >-
+  Some supporters step in once. Others help make sure the work keeps moving
+  with steady support.
+merchTitle: This is more than a shirt. It's a statement.
+merchIntro: >-
+  Wolf's story changed everything. But access to care gave him a second chance.
+merchBody: >-
+  This piece represents something bigger - a movement to ensure families don't
+  have to choose between their dog's life and the cost of care.

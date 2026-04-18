@@ -4,7 +4,10 @@ import { ButtonLink } from "@/components/button-link";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { assetIndex } from "@/data/assets";
-import { conditionCards, merchProduct } from "@/data/site-content";
+import { merchProduct } from "@/data/site-content";
+import { getProcessContent, getShopContent } from "@/lib/site-content";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Shop",
@@ -12,7 +15,12 @@ export const metadata: Metadata = {
     "Wear the mission with Drop 001 - ACCESS, inspired by Wolf's story and built to support emergency veterinary care.",
 };
 
-export default function ShopPage() {
+export default async function ShopPage() {
+  const [processContent, shopContent] = await Promise.all([
+    getProcessContent(),
+    getShopContent(),
+  ]);
+
   return (
     <div className="pb-20 sm:pb-24">
       <section className="section-shell py-10 sm:py-14 lg:py-18">
@@ -22,15 +30,13 @@ export default function ShopPage() {
               Wear the Mission
             </p>
             <h1 className="max-w-4xl text-5xl font-bold uppercase leading-none tracking-wide text-ink text-balance sm:text-6xl lg:text-7xl">
-              DROP 001 - ACCESS
+              {shopContent.shopHeroTitle}
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-ink-soft sm:text-xl">
-              This is more than a shirt. It&apos;s a statement.
+              {shopContent.shopHeroIntro}
             </p>
             <p className="max-w-2xl text-base leading-8 text-ink-soft">
-              A statement inspired by Wolf&apos;s survival story. Every purchase
-              supports access to emergency veterinary care and helps build the
-              lifeline.
+              {shopContent.shopHeroBody}
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/shop/access-long-sleeve">
@@ -134,33 +140,19 @@ export default function ShopPage() {
             Every Purchase Has A Purpose
           </p>
           <div className="mt-4 grid gap-4 lg:grid-cols-3">
-            <article className="rounded-[1.75rem] border border-ink/8 bg-white/78 p-5">
-              <h2 className="text-xl font-semibold text-ink">
-                Expand access to emergency veterinary care
-              </h2>
-              <p className="mt-3 text-sm leading-7 text-ink-soft">
-                Every piece supports our mission to expand access to emergency
-                veterinary care.
-              </p>
-            </article>
-            <article className="rounded-[1.75rem] border border-ink/8 bg-white/78 p-5">
-              <h2 className="text-xl font-semibold text-ink">
-                Prevent financial euthanasia or surrender
-              </h2>
-              <p className="mt-3 text-sm leading-7 text-ink-soft">
-                This work exists to help families keep their dogs at home when
-                the cost of care creates crisis.
-              </p>
-            </article>
-            <article className="rounded-[1.75rem] border border-ink/8 bg-white/78 p-5">
-              <h2 className="text-xl font-semibold text-ink">
-                Keep dogs where they belong - home
-              </h2>
-              <p className="mt-3 text-sm leading-7 text-ink-soft">
-                You&apos;re not just wearing something. You&apos;re backing
-                something bigger.
-              </p>
-            </article>
+            {shopContent.purposeCards.map((card) => (
+              <article
+                key={card.title}
+                className="rounded-[1.75rem] border border-ink/8 bg-white/78 p-5"
+              >
+                <h2 className="text-xl font-semibold text-ink">
+                  {card.title}
+                </h2>
+                <p className="mt-3 text-sm leading-7 text-ink-soft">
+                  {card.body}
+                </p>
+              </article>
+            ))}
           </div>
         </Reveal>
       </section>
@@ -169,12 +161,12 @@ export default function ShopPage() {
         <Reveal>
           <SectionHeading
             eyebrow="The Reality of Emergency Care"
-            title="Emergency care isn&apos;t just urgent - it&apos;s expensive."
-            intro="Treatment often requires at least 75% upfront payment before care can begin."
+            title={processContent.conditionsTitle}
+            intro={processContent.conditionsIntro}
           />
         </Reveal>
         <div className="mt-8 grid gap-4 lg:grid-cols-2">
-          {conditionCards.map((condition, index) => (
+          {processContent.conditions.map((condition, index) => (
             <Reveal key={condition.title} delay={index * 70}>
               <article className="panel p-6">
                 <h3 className="text-2xl font-semibold text-ink">

@@ -1,0 +1,25 @@
+phaseLabel: 'Phase 1 — Building the Lifeline'
+operationalState: >-
+  The Access to Care Lifeline is not yet fully operational. We are building
+  responsibly so that when we say yes, we can fully stand behind it.
+summary: >-
+  We are actively building the funding, structure, and partnerships needed to
+  support emergency cases responsibly and sustainably.
+fundAllocation:
+  - category: Emergency Veterinary Care
+    description: >-
+      phaseLabel: 'Phase 1 — Building the Lifeline'
+      operationalState: >-
+        The Access to Care Lifeline is not yet fully operational. We are building
+        responsibly so that when we say yes, we can fully stand behind it.
+      summary: >-
+        We are actively building the funding, structure, and partnerships needed to
+        support emergency cases responsibly and sustainably.
+      fundAllocation:
+        - category: Emergency Veterinary Care
+          description: >-
+            Diagnostics, procedures, surgery, hospitalization, medications, and
+            follow-up care for approved cases.
+          percentage: 85
+        - category: Operations & Partnerships
+          description: >-

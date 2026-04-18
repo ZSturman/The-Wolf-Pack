@@ -1,23 +1,43 @@
 import Image from "next/image";
 import { ButtonLink } from "@/components/button-link";
+import { CaseCard } from "@/components/case-card";
+import { DonationProgressBar } from "@/components/donation-progress-bar";
+import { EmailSignup } from "@/components/email-signup";
+import { BlogCard } from "@/components/blog-card";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { StatusCard } from "@/components/status-card";
 import { TrustStrip } from "@/components/trust-strip";
 import { assetIndex } from "@/data/assets";
 import {
-  campaignStatus,
-  conditionCards,
-  homePathways,
-  howItWorksSteps,
   merchProduct,
-  storyStats,
   supportOptions,
-  trustFacts,
-  videoEmbedUrl,
-} from "@/data/site-content"
+} from "@/data/site-content";
+import { getCases } from "@/lib/db/cases";
+import { getRecentPosts } from "@/lib/get-blog-posts";
+import {
+  getCampaignStatus,
+  getHomeContent,
+  getProcessContent,
+  getStoryContent,
+  getTrustContent,
+} from "@/lib/site-content";
+import type { CaseStatus } from "@/types/site";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const [allCases, recentPosts, campaignStatus, homeContent, storyContent, processContent, trustContent] = await Promise.all([
+    getCases(),
+    getRecentPosts(3),
+    getCampaignStatus(),
+    getHomeContent(),
+    getStoryContent(),
+    getProcessContent(),
+    getTrustContent(),
+  ]);
+  const featuredCases = allCases.filter((c) => c.featured);
+
   return (
     <div className="pb-20 sm:pb-24">
       <section className="section-shell py-10 sm:py-14 lg:py-18">
@@ -25,14 +45,13 @@ export default function Home() {
           <Reveal className="space-y-8">
             <div className="space-y-5">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ink-soft">
-                Access to Care Lifeline Initiative under SGT Canines
+                {homeContent.heroEyebrow}
               </p>
               <h1 className="max-w-4xl text-5xl font-bold uppercase leading-none tracking-wide text-ink text-balance sm:text-6xl lg:text-7xl">
-                When Treatment Exists But Access To Care Doesn&apos;t
+                {homeContent.heroTitle}
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-ink-soft sm:text-xl">
-                The Wolf Project helps families access emergency veterinary care
-                so dogs can stay in the homes where they belong.
+                {homeContent.heroIntro}
               </p>
             </div>
 
@@ -62,7 +81,7 @@ export default function Home() {
                   Applications
                 </p>
                 <p className="mt-2 text-lg font-semibold text-ink">
-                  Not yet open
+                  {campaignStatus.acceptingApplications ? "Open" : "Not yet open"}
                 </p>
               </div>
               <div className="rounded-[1.75rem] border border-ink/8 bg-white/78 p-4">
@@ -76,12 +95,12 @@ export default function Home() {
             </div>
 
             <p className="max-w-2xl text-sm leading-7 text-ink-soft">
-              {campaignStatus.summary}
+              {homeContent.heroSummary}
             </p>
           </Reveal>
 
           <Reveal delay={120} className="relative">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2.4rem] border border-ink/8 bg-white shadow-[0_28px_60px_rgba(17,22,20,0.08)]">
+            <div className="relative aspect-4/5 overflow-hidden rounded-[2.4rem] border border-ink/8 bg-white shadow-[0_28px_60px_rgba(17,22,20,0.08)]">
               <Image
                 src={assetIndex["wolf-hero-1"].localSrc}
                 alt={assetIndex["wolf-hero-1"].alt}
@@ -90,20 +109,17 @@ export default function Home() {
                 className="object-cover"
                 sizes="(min-width: 1024px) 40vw, 100vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-ink/45 via-transparent to-transparent" />
             </div>
             <div className="panel -mt-20 ml-auto max-w-md p-5 sm:-mt-24 sm:mr-6 sm:p-6">
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
                 This work exists because of one dog: Wolf.
               </p>
               <h2 className="mt-3 text-3xl font-bold text-ink">
-                The Problem No One Talks About
+                {homeContent.storyPanelTitle}
               </h2>
               <p className="mt-3 text-sm leading-7 text-ink-soft">
-                As we fought for Wolf, we realized this wasn&apos;t just our
-                story. His fight for survival revealed a painful reality - too
-                many dogs are lost not because treatment doesn&apos;t exist, but
-                because access to care doesn&apos;t.
+                {homeContent.storyPanelBody}
               </p>
             </div>
           </Reveal>
@@ -119,7 +135,7 @@ export default function Home() {
           />
         </Reveal>
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
-          {homePathways.map((pathway, index) => (
+          {homeContent.pathways.map((pathway, index) => (
             <Reveal key={pathway.title} delay={index * 80}>
               <article className="panel flex h-full flex-col p-6">
                 <p className="text-xs font-semibold uppercase tracking-[0.26em] text-ink-soft">
@@ -146,7 +162,7 @@ export default function Home() {
 
       <section className="section-shell py-12 sm:py-16">
         <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <Reveal className="relative aspect-[4/5] overflow-hidden rounded-[2.2rem] border border-ink/8 bg-white shadow-[0_24px_54px_rgba(17,22,20,0.08)]">
+          <Reveal className="relative aspect-4/5 overflow-hidden rounded-[2.2rem] border border-ink/8 bg-white shadow-[0_24px_54px_rgba(17,22,20,0.08)]">
             <Image
               src={assetIndex["wolf-hero-2"].localSrc}
               alt={assetIndex["wolf-hero-2"].alt}
@@ -159,11 +175,11 @@ export default function Home() {
           <Reveal delay={120}>
             <SectionHeading
               eyebrow="The Wolf Project"
-              title="When treatment exists, families deserve the chance to say yes."
-              intro="Our mission centers on one powerful idea: your dog can stay."
+              title={homeContent.missionTitle}
+              intro={homeContent.missionIntro}
             />
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {storyStats.map((stat) => (
+              {storyContent.stats.map((stat) => (
                 <article
                   key={stat.label}
                   className="rounded-[1.75rem] border border-ink/8 bg-white/78 p-5"
@@ -181,18 +197,9 @@ export default function Home() {
               ))}
             </div>
             <div className="prose-tight mt-8 max-w-3xl text-base leading-8 text-ink-soft">
-              <p>
-                The Wolf Project, an access to care lifeline, is an initiative
-                under the non profit organization, SGT Canines, to provide
-                financial assistance when families can not afford the upfront
-                required deposits to move forward with lifesaving treatment at
-                an emergency vet.
-              </p>
-              <p>
-                By helping families access emergency veterinary care when
-                financial barriers appear, we work to keep dogs where they
-                belong - at home with the people who love them.
-              </p>
+              {homeContent.missionParagraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/our-story" variant="secondary">
@@ -208,13 +215,13 @@ export default function Home() {
         <Reveal>
           <SectionHeading
             eyebrow="How The Wolf Project Helps"
-            title="A lifeline when treatment exists - but access to care does not."
-            intro="Financial support for dogs requiring urgent veterinary treatment, help for families facing crisis situations, and partnerships that expand access to lifesaving care."
+            title={homeContent.helpTitle}
+            intro={homeContent.helpIntro}
           />
         </Reveal>
         <div className="mt-8 grid gap-4 xl:grid-cols-[0.95fr_1.05fr]">
           <div className="grid gap-4">
-            {howItWorksSteps.map((step, index) => (
+            {processContent.steps.map((step, index) => (
               <Reveal key={step.title} delay={index * 70}>
                 <article className="panel p-6">
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
@@ -232,7 +239,7 @@ export default function Home() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            {conditionCards.map((condition, index) => (
+            {processContent.conditions.map((condition, index) => (
               <Reveal key={condition.title} delay={index * 80}>
                 <article className="panel p-5">
                   <h3 className="text-xl font-semibold text-ink">
@@ -251,23 +258,58 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Featured cases */}
+      {featuredCases.length > 0 && (
+        <section className="section-shell py-12 sm:py-16">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Dogs We&apos;re Helping"
+              title="Featured Cases"
+              intro="These are the dogs counting on us right now. Every case represents a family fighting for their dog's life."
+            />
+          </Reveal>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredCases.map((c, i) => (
+              <Reveal key={c!.slug} delay={i * 60}>
+                <CaseCard
+                  slug={c!.slug}
+                  name={c!.name}
+                  summary={c!.summary}
+                  heroImage={c!.heroImage}
+                  status={c!.status as CaseStatus}
+                  goalUsd={c!.goalUsd}
+                  raisedUsd={c!.raisedUsd ?? 0}
+                />
+              </Reveal>
+            ))}
+          </div>
+          <Reveal>
+            <div className="mt-6 text-center">
+              <ButtonLink href="/cases" variant="secondary">
+                View All Cases
+              </ButtonLink>
+            </div>
+          </Reveal>
+        </section>
+      )}
+
       <section className="section-shell py-12 sm:py-16">
         <Reveal>
           <SectionHeading
             eyebrow="The Promise We Keep"
-            title="Trust is not assumed. It is built."
-            intro="This is the promise we make - to every dog, every family, and every moment where time is running out."
+            title={homeContent.promiseTitle}
+            intro={homeContent.promiseIntro}
           />
         </Reveal>
         <Reveal delay={80}>
-          <TrustStrip items={trustFacts} className="mt-8" />
+          <TrustStrip items={trustContent.trustFacts} className="mt-8" />
         </Reveal>
       </section>
 
       <section className="section-shell py-12 sm:py-16">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal className="panel overflow-hidden">
-            <div className="relative aspect-[4/5] border-b border-ink/8 bg-white">
+            <div className="relative aspect-4/5 border-b border-ink/8 bg-white">
               <Image
                 src={assetIndex["merch-black-front"].localSrc}
                 alt={assetIndex["merch-black-front"].alt}
@@ -301,8 +343,8 @@ export default function Home() {
           <Reveal delay={120}>
             <SectionHeading
               eyebrow="Wear the Mission"
-              title="DROP 001 - ACCESS"
-              intro="A statement inspired by Wolf&apos;s survival story. Every purchase supports access to emergency veterinary care and helps build the lifeline."
+              title={homeContent.shopTitle}
+              intro={homeContent.shopIntro}
             />
             <div className="prose-tight mt-6 max-w-2xl text-base leading-8 text-ink-soft">
               {merchProduct.story.map((paragraph) => (
@@ -326,15 +368,11 @@ export default function Home() {
           <Reveal>
             <SectionHeading
               eyebrow="Wolf on the Dodo"
-              title="How one dog inspired this entire mission."
-              intro="Meet Wolf. Given 0-10% chance of survival."
+              title={homeContent.videoTitle}
+              intro={homeContent.videoIntro}
             />
             <div className="prose-tight mt-6 max-w-2xl text-base leading-8 text-ink-soft">
-              <p>
-                Want to read more on Wolf&apos;s story? Read Wolf&apos;s Story
-                and see how one emergency revealed the need for something
-                bigger.
-              </p>
+              <p>{homeContent.videoBody}</p>
             </div>
             <div className="mt-8">
               <ButtonLink href="/our-story" variant="secondary">
@@ -346,7 +384,7 @@ export default function Home() {
             <div className="relative aspect-video overflow-hidden rounded-[1.8rem] bg-ink">
               <iframe
                 title="Wolf on YouTube"
-                src={videoEmbedUrl}
+                src={homeContent.videoEmbedUrl}
                 className="absolute inset-0 h-full w-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
@@ -356,6 +394,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Email signup */}
+      <section className="section-shell py-12 sm:py-16">
+        <Reveal>
+          <div className="panel mx-auto max-w-2xl p-8">
+            <EmailSignup
+              heading={homeContent.emailHeading}
+              description={homeContent.emailDescription}
+            />
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Latest from the Pack */}
+      {recentPosts.length > 0 && (
+        <section className="section-shell py-12 sm:py-16">
+          <Reveal>
+            <SectionHeading
+              eyebrow="From the Pack"
+              title={homeContent.blogTitle}
+              align="center"
+            />
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {recentPosts.map((post) => (
+                <BlogCard key={post.slug} {...post} />
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <ButtonLink href="/blog" variant="ghost">
+                View All Posts →
+              </ButtonLink>
+            </div>
+          </Reveal>
+        </section>
+      )}
+
       <section className="section-shell py-12 sm:py-16">
         <Reveal className="rounded-[2.6rem] bg-forest px-6 py-8 text-white shadow-[0_30px_70px_rgba(17,22,20,0.18)] sm:px-8 sm:py-10">
           <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-start">
@@ -364,18 +437,13 @@ export default function Home() {
                 Back The Pack
               </p>
               <h2 className="max-w-3xl text-4xl font-bold uppercase leading-tight tracking-wide text-white sm:text-5xl">
-                Because every family deserves the chance to hear: your dog can
-                stay.
+                {homeContent.ctaTitle}
               </h2>
-              <p className="max-w-2xl text-base leading-8 text-white/78">
-                When emergency veterinary costs stand between a dog and the
-                treatment that could save them, families are often forced into
-                devastating decisions.
-              </p>
-              <p className="max-w-2xl text-base leading-8 text-white/78">
-                Your support helps create access to care when it&apos;s needed
-                most. Together, we can give more dogs the chance to go home.
-              </p>
+              {homeContent.ctaParagraphs.map((paragraph) => (
+                <p key={paragraph} className="max-w-2xl text-base leading-8 text-white/78">
+                  {paragraph}
+                </p>
+              ))}
               <div className="grid gap-4 sm:grid-cols-2">
                 {supportOptions
                   .filter((option) => option.kind !== "learn")
@@ -403,6 +471,14 @@ export default function Home() {
                       </ButtonLink>
                     </article>
                   ))}
+              </div>
+
+              {/* Lifeline progress */}
+              <div className="rounded-[1.75rem] border border-white/12 bg-white/8 p-5">
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-sand/76">
+                  Lifeline Progress
+                </p>
+                <DonationProgressBar dark />
               </div>
             </div>
 

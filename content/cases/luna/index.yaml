@@ -1,0 +1,27 @@
+name: Luna
+breed: Labrador retriever mix
+age: 6 years old
+summary: >-
+  Luna needs urgent abdominal surgery after an obstruction was discovered. Her
+  family moved fast, but the estimate landed before treatment could begin.
+heroImage: /assets/story/wolf-hero-2.jpg
+gallery:
+  - /assets/story/wolf-hero-1.jpg
+goalUsd: 6500
+raisedUsd: 2750
+status: active
+featured: true
+donationLink: ''
+veterinaryPartner: Gulf Coast Emergency Veterinary Hospital
+updates:
+  - date: '2026-04-14'
+    title: Imaging confirmed a blockage
+    body: >-
+      Luna was admitted after repeated vomiting and escalating abdominal pain.
+      Imaging confirmed a blockage and the team recommended surgery.
+  - date: '2026-04-17'
+    title: The first half of Luna's goal is in reach
+    body: >-
+      Supporters helped Luna's family clear the first major deposit. The next
+      stretch will cover monitoring, medications, and follow-up care.
+createdAt: '2026-04-14'

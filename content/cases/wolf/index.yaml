@@ -1,0 +1,29 @@
+name: Wolf
+breed: Mixed breed
+age: 4 years old
+summary: >-
+  The dog who started it all. Given a 0–10% chance of survival, Wolf's fight
+  revealed the need for an access to care lifeline.
+heroImage: /assets/story/wolf-hero-1.jpg
+gallery:
+  - /assets/story/wolf-hero-2.jpg
+goalUsd: 13000
+raisedUsd: 13000
+status: completed
+featured: true
+donationLink: ''
+veterinaryPartner: Emergency specialty hospital partner (placeholder)
+updates:
+  - date: '2025-01-01'
+    title: Wolf's story inspires The Wolf Project
+    body: >-
+      Wolf survived emergency surgery and is now thriving. His journey became
+      the founding story of The Wolf Project — an access to care lifeline for
+      families facing the same impossible decisions.
+  - date: '2026-04-18'
+    title: Founding story archived for transparency
+    body: >-
+      Wolf's case remains the benchmark for how The Wolf Project talks about
+      access to care, urgency, and what it takes to stand behind a yes.
+createdAt: '2025-01-01'
+

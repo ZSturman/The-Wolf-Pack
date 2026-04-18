@@ -4,7 +4,9 @@ import { ButtonLink } from "@/components/button-link";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { assetIndex } from "@/data/assets";
-import { storyChapters, storyStats } from "@/data/site-content";
+import { getStoryContent } from "@/lib/site-content";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Our Story",
@@ -12,7 +14,9 @@ export const metadata: Metadata = {
     "Wolf's story changed everything, revealing how often access to care disappears between diagnosis and a bill.",
 };
 
-export default function OurStoryPage() {
+export default async function OurStoryPage() {
+  const storyContent = await getStoryContent();
+
   return (
     <div className="pb-20 sm:pb-24">
       <section className="section-shell py-10 sm:py-14 lg:py-18">
@@ -22,19 +26,13 @@ export default function OurStoryPage() {
               Our Story
             </p>
             <h1 className="max-w-4xl text-5xl font-bold uppercase leading-none tracking-wide text-ink text-balance sm:text-6xl lg:text-7xl">
-              Why We Exist
+              {storyContent.heroTitle}
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-ink-soft sm:text-xl">
-              There were moments where, without CareCredit approval, Wolf&apos;s
-              treatment would have stopped. Moments where his life depended not
-              on medicine, but on whether a deposit went through.
+              {storyContent.heroIntro}
             </p>
             <p className="max-w-2xl text-base leading-8 text-ink-soft">
-              After days of diagnostics, imaging, and bloodwork, Wolf required
-              emergency exploratory surgery. The estimate came in at $13,000
-              due upfront. Wolf wasn&apos;t a dying dog - he was a dog with a
-              severe condition. The only thing standing between him and
-              survival was the cost of trying.
+              {storyContent.heroBody}
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/join-the-pack">Back The Pack</ButtonLink>
@@ -45,7 +43,7 @@ export default function OurStoryPage() {
           </Reveal>
 
           <Reveal delay={120} className="relative">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2.4rem] border border-ink/8 bg-white shadow-[0_28px_60px_rgba(17,22,20,0.08)]">
+            <div className="relative aspect-4/5 overflow-hidden rounded-[2.4rem] border border-ink/8 bg-white shadow-[0_28px_60px_rgba(17,22,20,0.08)]">
               <Image
                 src={assetIndex["wolf-hero-1"].localSrc}
                 alt={assetIndex["wolf-hero-1"].alt}
@@ -62,7 +60,7 @@ export default function OurStoryPage() {
       <section className="section-shell py-12 sm:py-16">
         <Reveal>
           <div className="grid gap-4 sm:grid-cols-3">
-            {storyStats.map((stat) => (
+            {storyContent.stats.map((stat) => (
               <article key={stat.label} className="panel p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ink-soft">
                   {stat.label}
@@ -83,12 +81,12 @@ export default function OurStoryPage() {
         <Reveal>
           <SectionHeading
             eyebrow="Wolf's Story"
-            title="From one emergency to a bigger mission."
-            intro="If funding hadn&apos;t come through in time, Wolf would not be here. Not because he couldn&apos;t be saved - but because he couldn&apos;t be afforded."
+            title={storyContent.sectionTitle}
+            intro={storyContent.sectionIntro}
           />
         </Reveal>
         <div className="mt-10 space-y-12">
-          {storyChapters.map((chapter, index) => {
+          {storyContent.chapters.map((chapter, index) => {
             const image = assetIndex[chapter.assetId];
 
             return (
@@ -98,7 +96,7 @@ export default function OurStoryPage() {
                 className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"
               >
                 <div
-                  className={`relative aspect-[4/5] overflow-hidden rounded-[2.2rem] border border-ink/8 bg-white shadow-[0_24px_54px_rgba(17,22,20,0.08)] ${
+                  className={`relative aspect-4/5 overflow-hidden rounded-[2.2rem] border border-ink/8 bg-white shadow-[0_24px_54px_rgba(17,22,20,0.08)] ${
                     index % 2 === 1 ? "lg:order-2" : ""
                   }`}
                 >
@@ -138,13 +136,10 @@ export default function OurStoryPage() {
             What it led to
           </p>
           <blockquote className="mt-4 max-w-4xl text-4xl font-bold uppercase leading-tight tracking-wide text-ink sm:text-5xl">
-            If a life can be saved, access should exist.
+            {storyContent.closingQuote}
           </blockquote>
           <p className="mt-6 max-w-3xl text-base leading-8 text-ink-soft">
-            Wolf should have been one of the dogs who disappear quietly between
-            diagnosis and a bill. He wasn&apos;t. And once you see that, you
-            can&apos;t ignore it. Because this isn&apos;t about one dog. It&apos;s
-            about a system where money is deciding who gets to live.
+            {storyContent.closingBody}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="/how-it-works" variant="secondary">

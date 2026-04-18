@@ -1,0 +1,17 @@
+accepting: false
+message: >-
+  The Access to Care Lifeline is not yet accepting applications. We are actively
+  building the funding, structure, and partnerships needed to support emergency
+  cases responsibly. Sign up below to be notified when applications open.
+formUrl: ''
+closedTitle: Applications Are Not Yet Open
+closedIntro: >-
+  We're building the lifeline responsibly. When we open applications, we want
+  to ensure we can fully stand behind every case we accept.
+openTitle: Submit a Case
+openIntro: >-
+  If your dog is facing an emergency and you need help accessing veterinary
+  care, you can submit a case for review.
+notifyHeading: Be the First to Know
+notifyDescription: Sign up to be notified when applications open.
+supportPrompt: 'In the meantime, you can help us reach our goal:'

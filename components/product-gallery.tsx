@@ -23,7 +23,7 @@ export function ProductGallery({ product }: ProductGalleryProps) {
   return (
     <div className="grid gap-8 xl:grid-cols-[1.1fr_0.9fr]">
       <div className="space-y-4">
-        <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-ink/8 bg-white shadow-[0_28px_60px_rgba(17,22,20,0.08)]">
+        <div className="relative aspect-4/5 overflow-hidden rounded-4xl border border-ink/8 bg-white shadow-[0_28px_60px_rgba(17,22,20,0.08)]">
           {activeImage ? (
             <Image
               src={activeImage.src}

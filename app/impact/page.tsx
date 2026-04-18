@@ -3,12 +3,10 @@ import { ButtonLink } from "@/components/button-link";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { StatusCard } from "@/components/status-card";
-import {
-  campaignStatus,
-  impactMilestones,
-  reportingFramework,
-  supportOptions,
-} from "@/data/site-content";
+import { supportOptions } from "@/data/site-content";
+import { getCampaignStatus, getTrustContent } from "@/lib/site-content";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Where We Are Now",
@@ -22,7 +20,12 @@ const statusStyles = {
   future: "border-ink/10 bg-white/80 text-ink-soft",
 } as const;
 
-export default function ImpactPage() {
+export default async function ImpactPage() {
+  const [campaignStatus, trustContent] = await Promise.all([
+    getCampaignStatus(),
+    getTrustContent(),
+  ]);
+
   return (
     <div className="pb-20 sm:pb-24">
       <section className="section-shell py-10 sm:py-14 lg:py-18">
@@ -32,16 +35,13 @@ export default function ImpactPage() {
               Where We Are Now
             </p>
             <h1 className="max-w-4xl text-5xl font-bold uppercase leading-none tracking-wide text-ink text-balance sm:text-6xl lg:text-7xl">
-              We are actively building the funding, structure, and partnerships
-              needed to support emergency cases responsibly and sustainably.
+              {trustContent.impactHeroTitle}
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-ink-soft sm:text-xl">
-              At this time, the Access to Care Lifeline is not yet fully
-              operational.
+              {trustContent.impactHeroIntro}
             </p>
             <p className="max-w-2xl text-base leading-8 text-ink-soft">
-              Our priority is to ensure that when we say yes - we can fully
-              stand behind it.
+              {trustContent.impactHeroBody}
             </p>
           </Reveal>
           <Reveal delay={120}>
@@ -54,12 +54,12 @@ export default function ImpactPage() {
         <Reveal>
           <SectionHeading
             eyebrow="Current focus"
-            title="Building the lifeline with care and clarity."
-            intro="The work is early, intentional, and grounded in what the project can responsibly stand behind."
+            title={trustContent.impactFocusTitle}
+            intro={trustContent.impactFocusIntro}
           />
         </Reveal>
         <div className="mt-8 space-y-4">
-          {impactMilestones.map((milestone, index) => (
+          {trustContent.milestones.map((milestone, index) => (
             <Reveal key={milestone.title} delay={index * 70}>
               <article className="panel p-6 sm:p-7">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -91,11 +91,11 @@ export default function ImpactPage() {
           <Reveal>
             <SectionHeading
               eyebrow="What guides the work"
-              title="If treatment exists, it deserves the chance."
-              intro="A dog&apos;s life should not depend on a wallet. Survival should not be a luxury."
+              title={trustContent.reportingTitle}
+              intro={trustContent.reportingIntro}
             />
             <div className="mt-8 grid gap-4">
-              {reportingFramework.map((item, index) => (
+              {trustContent.reportingFramework.map((item, index) => (
                 <article
                   key={item.title}
                   className="rounded-[1.75rem] border border-ink/8 bg-white/78 p-5"
@@ -119,16 +119,14 @@ export default function ImpactPage() {
               Be Part of the Promise
             </p>
             <ul className="mt-5 space-y-4 text-sm leading-7 text-ink-soft">
-              <li className="rounded-[1.4rem] border border-ink/8 bg-white/78 px-4 py-3">
-                This only works if people choose to stand in that space.
-              </li>
-              <li className="rounded-[1.4rem] border border-ink/8 bg-white/78 px-4 py-3">
-                Every family deserves the chance to say yes.
-              </li>
-              <li className="rounded-[1.4rem] border border-ink/8 bg-white/78 px-4 py-3">
-                The Wolf Project exists so more dogs can stay where they belong
-                - at home.
-              </li>
+              {trustContent.impactCtaItems.map((item) => (
+                <li
+                  key={item}
+                  className="rounded-[1.4rem] border border-ink/8 bg-white/78 px-4 py-3"
+                >
+                  {item}
+                </li>
+              ))}
             </ul>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={supportOptions[0].href} external>

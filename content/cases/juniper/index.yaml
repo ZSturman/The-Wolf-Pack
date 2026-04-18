@@ -1,0 +1,27 @@
+name: Juniper
+breed: Border collie mix
+age: 5 years old
+summary: >-
+  Juniper is in treatment after emergency surgery. She is stable, but her case
+  still needs support for hospitalization and discharge care.
+heroImage: /assets/story/wolf-hero-2.jpg
+gallery:
+  - /assets/story/wolf-hero-1.jpg
+goalUsd: 9200
+raisedUsd: 6100
+status: in-treatment
+featured: true
+donationLink: ''
+veterinaryPartner: Atlantic Veterinary Referral Center
+updates:
+  - date: '2026-04-08'
+    title: Juniper went into surgery overnight
+    body: >-
+      The hospital moved forward after the first portion of the deposit was
+      secured and the family approved the procedure.
+  - date: '2026-04-18'
+    title: Recovery is underway, but support is still needed
+    body: >-
+      Juniper is stable and responding well. The remaining goal will help cover
+      hospitalization, medications, and her transition back home.
+createdAt: '2026-04-08'

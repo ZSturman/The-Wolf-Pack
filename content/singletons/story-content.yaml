@@ -1,0 +1,68 @@
+heroTitle: Why We Exist
+heroIntro: >-
+  There were moments where, without CareCredit approval, Wolf's treatment would
+  have stopped. Moments where his life depended not on medicine, but on whether
+  a deposit went through.
+heroBody: >-
+  After days of diagnostics, imaging, and bloodwork, Wolf required emergency
+  exploratory surgery. The estimate came in at $13,000 due upfront. Wolf
+  wasn't a dying dog - he was a dog with a severe condition. The only thing
+  standing between him and survival was the cost of trying.
+stats:
+  - label: Upfront estimate
+    value: $13,000
+    note: >-
+      The estimate for Wolf's emergency exploratory surgery was due upfront.
+  - label: Chance to survive
+    value: 0-10%
+    note: Wolf was given a 0-10% chance to survive.
+  - label: What stood in the way
+    value: Access
+    note: >-
+      The problem was not medicine alone. The barrier was the cost of trying.
+sectionTitle: From one emergency to a bigger mission.
+sectionIntro: >-
+  If funding hadn't come through in time, Wolf would not be here. Not because
+  he couldn't be saved - but because he couldn't be afforded.
+chapters:
+  - title: Why We Exist
+    lead: >-
+      There were moments where, without CareCredit approval, Wolf's treatment
+      would have stopped.
+    paragraphs:
+      - >-
+        After days of diagnostics, imaging, and bloodwork, Wolf required
+        emergency exploratory surgery. The estimate came in at $13,000 due
+        upfront.
+      - >-
+        Wolf wasn't a dying dog - he was a dog with a severe condition. The
+        only thing standing between him and survival was the cost of trying.
+    assetId: wolf-hero-1
+  - title: The Problem No One Talks About
+    lead: As we fought for Wolf, we realized this wasn't just our story.
+    paragraphs:
+      - >-
+        Emergency veterinary deposits can reach thousands of dollars before
+        treatment even begins. For many families, those costs arrive suddenly
+        and without warning.
+      - >-
+        Dogs arrive with conditions that can be treated. Veterinarians have the
+        tools to save them. Families are willing to do anything. But before
+        care begins, access is denied.
+    assetId: wolf-hero-2
+  - title: What Makes Us Different
+    lead: Most organizations step in after surrender. We exist before that moment.
+    paragraphs:
+      - >-
+        We focus on the moment where diagnosis becomes a decision - because
+        treatment only matters if access exists.
+      - >-
+        If a life can be saved, access should exist. That belief is what led to
+        something bigger than one story.
+    assetId: merch-black-front
+closingQuote: If a life can be saved, access should exist.
+closingBody: >-
+  Wolf should have been one of the dogs who disappear quietly between diagnosis
+  and a bill. He wasn't. And once you see that, you can't ignore it. Because
+  this isn't about one dog. It's about a system where money is deciding who
+  gets to live.

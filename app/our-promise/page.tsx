@@ -5,13 +5,10 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { StatusCard } from "@/components/status-card";
 import { TrustStrip } from "@/components/trust-strip";
-import {
-  campaignStatus,
-  faqItems,
-  promiseCommitments,
-  supportOptions,
-  trustFacts,
-} from "@/data/site-content";
+import { supportOptions } from "@/data/site-content";
+import { getCampaignStatus, getTrustContent } from "@/lib/site-content";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Our Promise",
@@ -19,7 +16,12 @@ export const metadata: Metadata = {
     "The Promise We Keep: clarity, accountability, and a commitment to access when a life can still be saved.",
 };
 
-export default function OurPromisePage() {
+export default async function OurPromisePage() {
+  const [campaignStatus, trustContent] = await Promise.all([
+    getCampaignStatus(),
+    getTrustContent(),
+  ]);
+
   return (
     <div className="pb-20 sm:pb-24">
       <section className="section-shell py-10 sm:py-14 lg:py-18">
@@ -29,16 +31,13 @@ export default function OurPromisePage() {
               Our Promise
             </p>
             <h1 className="max-w-4xl text-5xl font-bold uppercase leading-none tracking-wide text-ink text-balance sm:text-6xl lg:text-7xl">
-              The Promise We Keep
+              {trustContent.promiseHeroTitle}
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-ink-soft sm:text-xl">
-              We saw what happens when money decides who lives. We refuse to
-              accept that as normal.
+              {trustContent.promiseHeroIntro}
             </p>
             <p className="max-w-2xl text-base leading-8 text-ink-soft">
-              This is the promise we make - to every dog, every family, and
-              every moment where time is running out: if a life can be saved,
-              access should exist.
+              {trustContent.promiseHeroBody}
             </p>
           </Reveal>
           <Reveal delay={120}>
@@ -51,12 +50,12 @@ export default function OurPromisePage() {
         <Reveal>
           <SectionHeading
             eyebrow="What That Promise Means"
-            title="We are building this with intention - and that means clarity in how we show up."
-            intro="Because survival should never depend on how fast help arrives."
+            title={trustContent.commitmentsTitle}
+            intro={trustContent.commitmentsIntro}
           />
         </Reveal>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {promiseCommitments.map((commitment, index) => (
+          {trustContent.commitments.map((commitment, index) => (
             <Reveal key={commitment} delay={index * 60}>
               <article className="panel h-full p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
@@ -71,7 +70,7 @@ export default function OurPromisePage() {
 
       <section className="section-shell py-12 sm:py-16">
         <Reveal>
-          <TrustStrip items={trustFacts} />
+          <TrustStrip items={trustContent.trustFacts} />
         </Reveal>
       </section>
 
@@ -80,11 +79,11 @@ export default function OurPromisePage() {
           <Reveal>
             <SectionHeading
               eyebrow="Transparency & Accountability"
-              title="Trust is not assumed. It is built."
-              intro="The clearest questions deserve direct answers."
+              title={trustContent.faqTitle}
+              intro={trustContent.faqIntro}
             />
             <div className="mt-8">
-              <FAQList items={faqItems} />
+              <FAQList items={trustContent.faqItems} />
             </div>
           </Reveal>
 
@@ -93,18 +92,12 @@ export default function OurPromisePage() {
               Where We Are Now
             </p>
             <h2 className="mt-3 text-4xl font-bold uppercase leading-tight tracking-wide text-ink">
-              We are actively building the funding, structure, and partnerships
-              needed to support emergency cases responsibly and sustainably.
+              {trustContent.promiseCalloutTitle}
             </h2>
             <div className="prose-tight mt-6 text-base leading-8 text-ink-soft">
-              <p>
-                At this time, the Access to Care Lifeline is not yet fully
-                operational.
-              </p>
-              <p>
-                Our priority is to ensure that when we say yes - we can fully
-                stand behind it.
-              </p>
+              {trustContent.promiseCalloutParagraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={supportOptions[0].href} external>

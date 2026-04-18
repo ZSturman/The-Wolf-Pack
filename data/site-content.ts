@@ -18,11 +18,11 @@ import type {
 export const navigation: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "Our Story", href: "/our-story" },
-  { label: "Access to Care", href: "/how-it-works" },
-  { label: "Our Promise", href: "/our-promise" },
-  { label: "Join The Pack", href: "/join-the-pack" },
+  { label: "Cases", href: "/cases" },
+  { label: "Donate", href: "/donate" },
+  { label: "Transparency", href: "/transparency" },
+  { label: "Blog", href: "/blog" },
   { label: "Shop", href: "/shop" },
-  { label: "Where We Are Now", href: "/impact" },
 ];
 
 export const socialLinks: SocialLink[] = [
@@ -34,7 +34,7 @@ export const socialLinks: SocialLink[] = [
 
 export const campaignStatus: CampaignStatus = {
   phaseLabel: "In its early stages",
-  launchGoalUsd: 0,
+  launchGoalUsd: 40000,
   operationalState:
     "At this time, the Access to Care Lifeline is not yet fully operational.",
   acceptingApplications: false,

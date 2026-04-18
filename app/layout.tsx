@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import "@fontsource-variable/manrope";
+import { DemoBanner } from "@/components/demo-banner";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { getSiteUrlAsUrl } from "@/lib/site-url";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yourdogcanstay.com"),
+  metadataBase: getSiteUrlAsUrl(),
   title: {
     default: "The Wolf Project | Your Dog Can Stay",
     template: "%s | The Wolf Project",
@@ -35,6 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full">
+        <DemoBanner />
         <div className="relative flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1">{children}</main>
