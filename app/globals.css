@@ -13,8 +13,21 @@
   --color-ink: #111111;
   --color-ink-soft: #5a5a5a;
   --color-forest: #1a1a1a;
-  --color-ember: #6b4433;
+  --color-ember: #b14a36;       /* warm reddish-brown — secondary accent for icons, dividers, hovers */
+  --color-ember-deep: #6b4433;  /* original ember — preserved for legacy callsites and earthy details */
   --color-wheat: #f0eeeb;
+  /*
+   * Red accent system — use sparingly.
+   * - garnet:      primary CTA fill, donate buttons, urgent badges, headline punctuation underlines.
+   *                Pair with cream/white text. Verified AA on cream and white.
+   * - garnet-soft: tinted background for badges, stat highlights, chips. Pair with garnet text.
+   * - blush:       very pale wash for section backgrounds where extra warmth is wanted.
+   * Never use red as a full-bleed alarm color or for body copy.
+   */
+  --color-garnet: #8a1c2b;
+  --color-garnet-deep: #6e1622;
+  --color-garnet-soft: #f4dfe2;
+  --color-blush: #fbf1f0;
   --font-sans: "Manrope Variable", "Avenir Next", "Segoe UI", sans-serif;
 }
 

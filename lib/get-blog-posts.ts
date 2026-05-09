@@ -13,6 +13,8 @@ export type BlogPostEntry = {
 
 const categoryLabels: Record<string, string> = {
   "emergency-care": "Emergency Care",
+  "emergency-signs": "Emergency Signs",
+  "vet-talk": "Vet Talk",
   "preventative-care": "Preventative Care",
   "vet-resources": "Vet Resources",
   "community-updates": "Community Updates",

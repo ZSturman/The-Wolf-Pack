@@ -6,10 +6,13 @@ import { EmailSignup } from "@/components/email-signup";
 import { BlogCard } from "@/components/blog-card";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
+import { StatCallout } from "@/components/stat-callout";
 import { StatusCard } from "@/components/status-card";
 import { TrustStrip } from "@/components/trust-strip";
 import { assetIndex } from "@/data/assets";
 import {
+  audiencePaths,
+  impactStats,
   merchProduct,
   supportOptions,
 } from "@/data/site-content";
@@ -50,20 +53,21 @@ export default async function Home() {
               <h1 className="max-w-4xl text-5xl font-bold uppercase leading-none tracking-wide text-ink text-balance sm:text-6xl lg:text-7xl">
                 {homeContent.heroTitle}
               </h1>
+              <div className="h-1 w-24 rounded-full bg-garnet" aria-hidden="true" />
               <p className="max-w-2xl text-lg leading-8 text-ink-soft sm:text-xl">
                 {homeContent.heroIntro}
               </p>
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href={supportOptions[0].href} external>
-                {supportOptions[0].label}
+              <ButtonLink href={supportOptions[0].href} external variant="donate">
+                Donate Now
               </ButtonLink>
-              <ButtonLink href="/our-story" variant="secondary">
-                Our Story
+              <ButtonLink href="/apply" variant="secondary">
+                Get Help
               </ButtonLink>
-              <ButtonLink href="/shop" variant="ghost">
-                Wear the Mission
+              <ButtonLink href="/about" variant="ghost">
+                Our Mission
               </ButtonLink>
             </div>
 
@@ -126,34 +130,42 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Audience router — every visitor finds their path here. */}
       <section className="section-shell py-12 sm:py-16">
         <Reveal>
           <SectionHeading
-            eyebrow="How You Can Help"
-            title="Back the pack, learn about access to care, or wear the mission."
-            intro="Your support helps create access to care when it&apos;s needed most."
+            eyebrow="Find Your Path"
+            title="Whoever you are, you belong here."
+            intro="Donors, families, vets, and curious supporters all have a place in this work."
           />
         </Reveal>
-        <div className="mt-8 grid gap-4 lg:grid-cols-3">
-          {homeContent.pathways.map((pathway, index) => (
-            <Reveal key={pathway.title} delay={index * 80}>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {audiencePaths.map((path, index) => (
+            <Reveal key={path.audience} delay={index * 70}>
               <article className="panel flex h-full flex-col p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-ink-soft">
-                  {pathway.eyebrow}
+                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-garnet-deep">
+                  {path.eyebrow}
                 </p>
-                <h3 className="mt-4 text-3xl font-bold text-ink">
-                  {pathway.title}
+                <h3 className="mt-4 text-2xl font-bold leading-tight text-ink">
+                  {path.title}
                 </h3>
                 <p className="mt-4 flex-1 text-sm leading-7 text-ink-soft">
-                  {pathway.description}
+                  {path.description}
                 </p>
-                <ButtonLink
-                  href={pathway.href}
-                  variant="secondary"
-                  className="mt-6 self-start"
-                >
-                  Explore
-                </ButtonLink>
+                <div className="mt-6 flex flex-col gap-2">
+                  <ButtonLink
+                    href={path.primaryHref}
+                    external={path.primaryExternal}
+                    variant={path.audience === "donor" ? "donate" : "primary"}
+                  >
+                    {path.primaryLabel}
+                  </ButtonLink>
+                  {path.secondaryHref && path.secondaryLabel ? (
+                    <ButtonLink href={path.secondaryHref} variant="ghost">
+                      {path.secondaryLabel}
+                    </ButtonLink>
+                  ) : null}
+                </div>
               </article>
             </Reveal>
           ))}
@@ -292,6 +304,38 @@ export default async function Home() {
           </Reveal>
         </section>
       )}
+
+      {/* Impact stats — donation tiers visualized as garnet callouts. */}
+      <section className="section-shell py-12 sm:py-16">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Your Impact"
+            title="Every gift is a moment we get to say yes."
+            intro="Here's what your support builds."
+          />
+        </Reveal>
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {impactStats.map((stat, index) => (
+            <Reveal key={stat.label} delay={index * 70}>
+              <StatCallout
+                value={stat.value}
+                label={stat.label}
+                detail={stat.detail}
+              />
+            </Reveal>
+          ))}
+        </div>
+        <Reveal>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <ButtonLink href={supportOptions[0].href} external variant="donate">
+              Donate Now
+            </ButtonLink>
+            <ButtonLink href="/donate" variant="secondary">
+              See all ways to give
+            </ButtonLink>
+          </div>
+        </Reveal>
+      </section>
 
       <section className="section-shell py-12 sm:py-16">
         <Reveal>

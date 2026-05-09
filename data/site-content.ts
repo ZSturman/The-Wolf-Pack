@@ -1,9 +1,11 @@
 import { assetIndex } from "@/data/assets";
 import type {
+  AudiencePath,
   CampaignStatus,
   ConditionCard,
   FAQItem,
   HighlightStat,
+  ImpactStat,
   MerchProduct,
   Milestone,
   NavItem,
@@ -16,13 +18,56 @@ import type {
 } from "@/types/site";
 
 export const navigation: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "Our Story", href: "/our-story" },
-  { label: "Cases", href: "/cases" },
   { label: "Donate", href: "/donate" },
-  { label: "Transparency", href: "/transparency" },
-  { label: "Blog", href: "/blog" },
-  { label: "Shop", href: "/shop" },
+  { label: "Get Help", href: "/apply" },
+  { label: "For Vets", href: "/for-vets" },
+  {
+    label: "About",
+    href: "/about",
+    children: [
+      {
+        label: "About The Wolf Project",
+        href: "/about",
+        description: "Mission, Wolf's story, and where we're headed.",
+      },
+      {
+        label: "Our Story",
+        href: "/our-story",
+        description: "Why we exist, in Wolf's own chapters.",
+      },
+      {
+        label: "Cases",
+        href: "/cases",
+        description: "Active, completed, and remembered families we've stood with.",
+      },
+      {
+        label: "Stories",
+        href: "/blog",
+        description: "Vet Talk, family perspectives, and emergency-care guides.",
+      },
+      {
+        label: "Transparency",
+        href: "/transparency",
+        description: "Where every dollar goes and how we report it.",
+      },
+      {
+        label: "Membership",
+        href: "/membership",
+        description: "An emerging way for families to stay ahead of emergencies.",
+      },
+      {
+        label: "Community Fundraisers",
+        href: "/community-fundraisers",
+        description: "Spay, neuter, and wellness events for low-income areas.",
+      },
+      {
+        label: "Shop",
+        href: "/shop",
+        description: "Wear the mission. Every purchase backs the lifeline.",
+      },
+    ],
+  },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const socialLinks: SocialLink[] = [
@@ -100,6 +145,81 @@ export const homePathways: Pathway[] = [
     description:
       "Every purchase supports access to emergency veterinary care and helps build the lifeline.",
     href: "/shop",
+  },
+];
+
+/**
+ * Four-audience routing block surfaced near the top of the homepage so every
+ * visitor can self-identify and reach their hub quickly.
+ */
+export const audiencePaths: AudiencePath[] = [
+  {
+    audience: "donor",
+    eyebrow: "Donors & Supporters",
+    title: "Fund the moment that matters",
+    description:
+      "Your gift turns a devastating estimate into a chance to try. Every dollar goes to emergency care.",
+    primaryHref:
+      "https://www.zeffy.com/en-US/donation-form/the-wolf-project-founding-pack-members",
+    primaryLabel: "Donate Now",
+    primaryExternal: true,
+    secondaryHref: "/donate",
+    secondaryLabel: "See your impact",
+  },
+  {
+    audience: "family",
+    eyebrow: "Families in Crisis",
+    title: "You're not alone. We can help.",
+    description:
+      "If your dog needs emergency care and cost is the barrier, start here. We review every case with care.",
+    primaryHref: "/apply",
+    primaryLabel: "Apply for Help",
+    secondaryHref: "/how-it-works",
+    secondaryLabel: "How it works",
+  },
+  {
+    audience: "vet",
+    eyebrow: "Veterinary Partners",
+    title: "We support you in the moments you can't control",
+    description:
+      "Funded deposits, family handling, and minimal admin so your team can focus on care.",
+    primaryHref: "/for-vets",
+    primaryLabel: "Partner With Us",
+    secondaryHref: "/contact",
+    secondaryLabel: "Schedule a call",
+  },
+  {
+    audience: "curious",
+    eyebrow: "Just Looking",
+    title: "Learn why we exist",
+    description:
+      "Read Wolf's story, follow the work, and join the email list when you're ready.",
+    primaryHref: "/about",
+    primaryLabel: "About The Wolf Project",
+    secondaryHref: "/blog",
+    secondaryLabel: "Read stories",
+  },
+];
+
+/** Donation impact tiers shown on Donate + Home as visual stat callouts. */
+export const impactStats: ImpactStat[] = [
+  {
+    value: "$5,000",
+    label: "can save a life",
+    detail:
+      "Funds the deposit and emergency care that gets a dog through the door when minutes matter.",
+  },
+  {
+    value: "$40,000",
+    label: "sustains the lifeline",
+    detail:
+      "Builds an upfront-care reserve so we can say yes the moment timing matters most.",
+  },
+  {
+    value: "$12,000",
+    label: "= 50 spay/neuters + wellness",
+    detail:
+      "Powers a community give-back event in a low-income area — preventing crises before they start.",
   },
 ];
 

@@ -216,6 +216,42 @@ const SEED_POSTS = [
     featured: false,
     body: "Emergency care doesn't end at discharge. Here's how families can prepare for the first week home.",
   },
+  {
+    slug: "vet-talk-what-er-vets-wish-you-knew",
+    title: "Vet Talk: What Your ER Vet Wishes You Knew Before You Walk In",
+    excerpt:
+      "A note to families: a few small things you can do in the first ten minutes of an emergency to give your dog the best possible shot.",
+    category: "vet-talk",
+    featuredImage: null,
+    author: "The Wolf Project",
+    publishedAt: "2026-05-02",
+    featured: true,
+    body: "When you arrive at an emergency animal hospital, the clock is already running. Here's what helps your dog the most — straight from the people on the other side of the door.",
+  },
+  {
+    slug: "emergency-signs-limp-is-a-crisis",
+    title: "Emergency Signs: When a Limp Is Actually a Crisis",
+    excerpt:
+      "Most limps resolve on their own. Some don't. Here's how to tell which ones are racing the clock.",
+    category: "emergency-signs",
+    featuredImage: null,
+    author: "The Wolf Project",
+    publishedAt: "2026-05-04",
+    featured: false,
+    body: "A dog showing up sore after a long walk is a Saturday afternoon. A dog suddenly unable to bear weight, with a swollen joint, a hot leg, or visible distress — that is a different conversation.",
+  },
+  {
+    slug: "emergency-signs-bloat-gdv",
+    title: "Emergency Signs: Bloated Belly, Restless Pacing, No Appetite",
+    excerpt:
+      "GDV (\"bloat\") can kill a dog in a few hours. Here is the cluster of signs that means race to the ER right now.",
+    category: "emergency-signs",
+    featuredImage: null,
+    author: "The Wolf Project",
+    publishedAt: "2026-05-06",
+    featured: false,
+    body: "Gastric dilatation-volvulus — bloat — is one of the most time-sensitive emergencies in veterinary medicine. Hours matter.",
+  },
 ];
 
 const SEED_SINGLETONS: Record<string, Record<string, unknown>> = {

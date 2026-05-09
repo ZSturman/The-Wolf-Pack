@@ -5,15 +5,17 @@ type ButtonLinkProps = {
   href: string;
   children: React.ReactNode;
   className?: string;
-  variant?: "primary" | "secondary" | "ghost" | "inverse";
+  variant?: "primary" | "secondary" | "ghost" | "inverse" | "donate";
   external?: boolean;
 };
 
 const variants = {
   primary:
-    "bg-forest text-white shadow-[0_18px_40px_rgba(0,0,0,0.18)] hover:bg-ink",
+    "bg-garnet text-white shadow-[0_18px_40px_rgba(138,28,43,0.22)] hover:bg-garnet-deep",
+  donate:
+    "bg-garnet text-white shadow-[0_18px_40px_rgba(138,28,43,0.28)] ring-1 ring-garnet-deep/40 hover:bg-garnet-deep",
   secondary:
-    "border border-ink/12 bg-white/85 text-ink hover:border-ink/30 hover:bg-white",
+    "border border-ink/12 bg-white/85 text-ink hover:border-garnet/30 hover:bg-white",
   ghost:
     "border border-transparent bg-transparent text-ink hover:border-ink/10 hover:bg-white/55",
   inverse:
@@ -21,7 +23,7 @@ const variants = {
 };
 
 const sharedClasses =
-  "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold tracking-[0.02em] transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold tracking-[0.02em] transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-garnet focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 export function ButtonLink({
   href,

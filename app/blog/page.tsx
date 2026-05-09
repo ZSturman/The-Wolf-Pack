@@ -16,6 +16,8 @@ export const metadata: Metadata = {
 
 const categories = [
   "emergency-care",
+  "emergency-signs",
+  "vet-talk",
   "preventative-care",
   "vet-resources",
   "community-updates",

@@ -31,6 +31,10 @@ export interface SupportOption {
 export interface NavItem {
   label: string;
   href: string;
+  /** Optional sub-items rendered as a mega-menu under this nav entry. */
+  children?: NavItem[];
+  /** Optional short blurb shown next to mega-menu sub-items. */
+  description?: string;
 }
 
 export interface SocialLink {
@@ -49,6 +53,29 @@ export interface Pathway {
   description: string;
   href: string;
   eyebrow: string;
+}
+
+/**
+ * Top-of-page routing card used to direct each of the four core audiences
+ * (donors, families, veterinary partners, curious visitors) to their hub.
+ */
+export interface AudiencePath {
+  audience: "donor" | "family" | "vet" | "curious";
+  eyebrow: string;
+  title: string;
+  description: string;
+  primaryHref: string;
+  primaryLabel: string;
+  primaryExternal?: boolean;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+
+/** A single visual impact statistic — large number + label + optional detail. */
+export interface ImpactStat {
+  value: string;
+  label: string;
+  detail?: string;
 }
 
 export interface StoryChapter {
@@ -148,6 +175,8 @@ export interface DogCase {
 
 export type BlogCategory =
   | "emergency-care"
+  | "emergency-signs"
+  | "vet-talk"
   | "preventative-care"
   | "vet-resources"
   | "community-updates"
@@ -175,6 +204,60 @@ export interface DonationProgress {
   source: DonationSource;
   apiProvider: string;
   apiKey: string;
+}
+
+/* ── Lifeline applications (case intake) ─────────────── */
+
+export type ApplicationStatus =
+  | "submitted"
+  | "reviewing"
+  | "approved"
+  | "declined";
+
+export interface ApplicationAttachment {
+  url: string;
+  filename: string;
+  contentType: string;
+}
+
+export interface Application {
+  /** Firestore doc id */
+  id: string;
+  status: ApplicationStatus;
+  submittedAt: string;
+  updatedAt: string;
+  /** Step 1 */
+  contactName: string;
+  contactEmail: string;
+  contactPhone: string;
+  contactZip: string;
+  dogName: string;
+  dogBreed: string;
+  dogAge: string;
+  /** Step 2 */
+  situation: string;
+  urgency: "immediate" | "within-24h" | "within-week" | "uncertain";
+  hospitalName: string;
+  vetContact: string;
+  estimateUsd: string;
+  /** Step 3 */
+  attachments: ApplicationAttachment[];
+  /** Step 4 */
+  agreedTransparency: boolean;
+  agreedContentRights: boolean;
+  /** Internal admin notes */
+  adminNotes?: string;
+  /** Generated on approval */
+  caseSlug?: string;
+  portalToken?: string;
+  /** Updates posted by the family from the portal. */
+  familyUpdates?: FamilyUpdate[];
+}
+
+export interface FamilyUpdate {
+  postedAt: string;
+  note: string;
+  attachments: ApplicationAttachment[];
 }
 
 /* ── Application config ──────────────────────────────── */

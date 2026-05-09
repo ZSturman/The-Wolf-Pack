@@ -8,7 +8,10 @@ import { NextResponse } from "next/server";
  * doesn't break during development.
  */
 export async function POST(request: Request) {
-  const { email } = (await request.json()) as { email?: string };
+  const { email, interest } = (await request.json()) as {
+    email?: string;
+    interest?: string;
+  };
 
   if (!email || typeof email !== "string") {
     return NextResponse.json(
@@ -25,12 +28,19 @@ export async function POST(request: Request) {
     );
   }
 
+  const safeInterest =
+    typeof interest === "string" && interest.length <= 64
+      ? interest.replace(/[^a-z0-9_-]/gi, "")
+      : "";
+
   const apiKey = process.env.KIT_API_KEY;
   const formId = process.env.KIT_FORM_ID;
 
   if (!apiKey || !formId) {
     // Not configured yet — log and return success so users aren't blocked
-    console.log(`[subscribe] Email collected (Kit not configured): ${email}`);
+    console.log(
+      `[subscribe] Email collected (Kit not configured): ${email}${safeInterest ? ` interest=${safeInterest}` : ""}`,
+    );
     return NextResponse.json({ ok: true });
   }
 
@@ -40,7 +50,11 @@ export async function POST(request: Request) {
       {
         method: "POST",
         headers: { "Content-Type": "application/json; charset=utf-8" },
-        body: JSON.stringify({ api_key: apiKey, email }),
+        body: JSON.stringify({
+          api_key: apiKey,
+          email,
+          ...(safeInterest ? { tags: [safeInterest] } : {}),
+        }),
       },
     );
 

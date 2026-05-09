@@ -2,7 +2,7 @@ import { cn } from "@/lib/cn";
 import type { CaseStatus } from "@/types/site";
 
 const statusConfig: Record<CaseStatus, { label: string; bg: string; text: string }> = {
-  active: { label: "Active", bg: "bg-amber-100", text: "text-amber-800" },
+  active: { label: "Active", bg: "bg-garnet-soft", text: "text-garnet-deep" },
   funded: { label: "Funded", bg: "bg-emerald-100", text: "text-emerald-800" },
   "in-treatment": { label: "In Treatment", bg: "bg-blue-100", text: "text-blue-800" },
   completed: { label: "Completed", bg: "bg-green-100", text: "text-green-800" },

@@ -9,6 +9,7 @@ import type { ReactNode } from "react";
 
 const navItems = [
   { label: "Dashboard", href: "/admin" },
+  { label: "Applications", href: "/admin/applications" },
   { label: "Cases", href: "/admin/cases" },
   { label: "Blog Posts", href: "/admin/posts" },
   { label: "Site Settings", href: "/admin/settings" },

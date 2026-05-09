@@ -11,6 +11,8 @@ import type { BlogCategory } from "@/types/site";
 
 const CATEGORY_OPTIONS: BlogCategory[] = [
   "emergency-care",
+  "emergency-signs",
+  "vet-talk",
   "preventative-care",
   "vet-resources",
   "community-updates",

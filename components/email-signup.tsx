@@ -13,6 +13,10 @@ type EmailSignupProps = {
   description?: string;
   /** Invert colors for dark backgrounds */
   dark?: boolean;
+  /** Optional Kit tag to attach (e.g. "membership-waitlist"). */
+  interest?: string;
+  /** Override CTA label (e.g. "Join the waitlist"). */
+  ctaLabel?: string;
 };
 
 export function EmailSignup({
@@ -21,6 +25,8 @@ export function EmailSignup({
   heading = "Join the Pack",
   description = "Get updates on cases, milestones, and how the lifeline is growing.",
   dark = false,
+  interest,
+  ctaLabel,
 }: EmailSignupProps) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -35,7 +41,7 @@ export function EmailSignup({
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, ...(interest ? { interest } : {}) }),
       });
       const data = await res.json();
       if (res.ok) {
@@ -103,7 +109,7 @@ export function EmailSignup({
               status === "loading" && "opacity-60",
             )}
           >
-            {status === "loading" ? "…" : "Join"}
+            {status === "loading" ? "…" : (ctaLabel ?? "Join")}
           </button>
         </div>
         {status === "error" && (
@@ -159,7 +165,7 @@ export function EmailSignup({
             status === "loading" && "opacity-60",
           )}
         >
-          {status === "loading" ? "Joining…" : "Join"}
+          {status === "loading" ? "Joining…" : (ctaLabel ?? "Join")}
         </button>
       </form>
       {status === "error" && (
