@@ -4,25 +4,256 @@ import { adminDb } from "./firebase-admin";
 
 const SEED_CASES = [
   {
+    slug: "azu",
+    name: "Azu",
+    breed: "Husky mix",
+    age: "5 years old",
+    summary:
+      "Azu needs urgent surgery after imaging showed an intestinal obstruction. His family can contribute, but the deposit has to be met before care can move forward.",
+    heroImage: "/assets/story/wolf-hero-2.jpg",
+    gallery: ["/assets/story/wolf-hero-1.jpg", "/assets/story/wolf-hero-2.jpg"],
+    goalUsd: 7800,
+    raisedUsd: 4625,
+    status: "active",
+    featured: true,
+    featuredPriority: 1,
+    donationLink: "",
+    veterinaryPartner: "Gulf Coast Emergency Veterinary Hospital",
+    urgencyLabel: "Deposit needed today",
+    condition: "Suspected intestinal obstruction",
+    treatmentNeed:
+      "Emergency exploratory surgery, overnight hospitalization, pain control, IV fluids, and post-op monitoring.",
+    fundingNeed:
+      "The hospital requires a treatment deposit before surgery begins. Azu's family has committed what they can, and this case fund covers the remaining access-to-care gap.",
+    ownerCommitment:
+      "Azu's family is contributing a co-pay, approving follow-up communication, and sharing updates so donors can follow the full treatment journey.",
+    approvalCriteriaNote:
+      "Placeholder review: treatable emergency, urgent timeline, veterinary recommendation documented, family participation confirmed, and direct hospital payment path available.",
+    donorImpactNote:
+      "Gifts to Azu's case help unlock surgery, hospitalization, medications, and discharge support so he can return home.",
+    medicalNotes: [
+      {
+        date: "2026-06-12",
+        title: "Imaging supports obstruction concern",
+        body: "Radiographs showed a pattern consistent with a blockage. The care team recommended surgery if symptoms did not resolve quickly.",
+      },
+      {
+        date: "2026-06-13",
+        title: "Surgery estimate issued",
+        body: "The treatment estimate includes anesthesia, exploratory surgery, hospitalization, medications, and recheck planning.",
+      },
+    ],
+    timeline: [
+      {
+        date: "2026-06-12",
+        title: "Azu arrived at the ER",
+        body: "Repeated vomiting and abdominal pain prompted an emergency visit.",
+      },
+      {
+        date: "2026-06-13",
+        title: "Case approved for placeholder review",
+        body: "The Wolf Project reviewed the medical need, family contribution, and hospital estimate.",
+      },
+      {
+        date: "2026-06-14",
+        title: "Fundraising push begins",
+        body: "Wednesday social and Friday community updates will keep donors close to Azu's progress.",
+      },
+    ],
+    updates: [
+      {
+        date: "2026-06-14",
+        title: "Azu is stable, but the clock is moving",
+        body: "He is receiving supportive care while the team prepares for the next step. The remaining gap is focused on the surgery deposit.",
+      },
+      {
+        date: "2026-06-15",
+        title: "Family co-pay confirmed",
+        body: "Azu's family has committed their portion and is staying in close contact with the hospital and The Wolf Project team.",
+      },
+    ],
+    story:
+      "Azu is the kind of case The Wolf Project was built for: treatment exists, a veterinary team is ready, and the barrier is the upfront cost of getting care started.\n\nHis family moved quickly when symptoms escalated. They are participating in the plan, contributing what they can, and staying connected through updates so supporters can follow the story with clarity.",
+    createdAt: "2026-06-12",
+  },
+  {
+    slug: "koda",
+    name: "Koda",
+    breed: "Labrador retriever mix",
+    age: "7 years old",
+    summary:
+      "Koda is hospitalized for a urinary blockage. He has been stabilized, but the next stretch covers catheter care, monitoring, and discharge medications.",
+    heroImage: "/assets/story/wolf-hero-1.jpg",
+    gallery: ["/assets/story/wolf-hero-2.jpg"],
+    goalUsd: 5200,
+    raisedUsd: 3180,
+    status: "in-treatment",
+    featured: true,
+    featuredPriority: 2,
+    donationLink: "",
+    veterinaryPartner: "Riverbend Specialty and Emergency",
+    urgencyLabel: "In treatment now",
+    condition: "Urinary obstruction",
+    treatmentNeed:
+      "Emergency stabilization, catheter care, hospitalization, lab monitoring, pain control, and discharge medications.",
+    fundingNeed:
+      "Koda's immediate deposit was partially covered. Remaining support helps keep monitoring in place through discharge.",
+    ownerCommitment:
+      "Koda's owner is contributing to the bill and coordinating follow-up care to reduce the chance of recurrence.",
+    approvalCriteriaNote:
+      "Placeholder review: time-sensitive emergency, treatment underway, hospital estimate available, and owner co-pay confirmed.",
+    donorImpactNote:
+      "Support helps Koda stay hospitalized long enough to recover safely instead of leaving care too soon.",
+    medicalNotes: [
+      {
+        date: "2026-06-10",
+        title: "Blockage relieved",
+        body: "The emergency team placed a catheter and began monitoring kidney values and urine output.",
+      },
+    ],
+    timeline: [
+      {
+        date: "2026-06-10",
+        title: "Koda admitted",
+        body: "He arrived painful and unable to urinate, a life-threatening emergency.",
+      },
+      {
+        date: "2026-06-11",
+        title: "Stabilization continues",
+        body: "The team is watching for safe urine output and improved lab values.",
+      },
+    ],
+    updates: [
+      {
+        date: "2026-06-11",
+        title: "Koda made it through the first night",
+        body: "He is brighter today, but the care team wants another night of monitoring before discharge.",
+      },
+    ],
+    story:
+      "Koda's emergency moved fast. A urinary blockage can become fatal quickly, and his family needed help bridging the cost of continued hospitalization after the first deposit.",
+    createdAt: "2026-06-10",
+  },
+  {
+    slug: "keelo",
+    name: "Keelo",
+    breed: "German shepherd mix",
+    age: "4 years old",
+    summary:
+      "Keelo's emergency surgery is complete, and he is home recovering. His story shows what donor support makes possible when access arrives in time.",
+    heroImage: "/assets/story/wolf-hero-1.jpg",
+    gallery: ["/assets/story/wolf-hero-2.jpg"],
+    goalUsd: 6400,
+    raisedUsd: 6400,
+    status: "completed",
+    featured: false,
+    featuredPriority: 3,
+    donationLink: "",
+    veterinaryPartner: "Atlantic Veterinary Referral Center",
+    urgencyLabel: "Home recovering",
+    condition: "Foreign body surgery",
+    treatmentNeed:
+      "Emergency surgery, hospitalization, medication, and recheck support.",
+    fundingNeed:
+      "Keelo's case is fully funded. Additional gifts support the Emergency LIFELINE Fund for the next urgent deposit.",
+    ownerCommitment:
+      "Keelo's family contributed to the estimate, shared recovery updates, and completed follow-up care.",
+    approvalCriteriaNote:
+      "Placeholder review: treatable emergency, clear surgical recommendation, owner participation, and documented treatment outcome.",
+    donorImpactNote:
+      "Donors helped turn a high upfront estimate into surgery, recovery, and a safe return home.",
+    medicalNotes: [
+      {
+        date: "2026-05-20",
+        title: "Surgery completed",
+        body: "The obstruction was removed and Keelo began monitored recovery.",
+      },
+      {
+        date: "2026-05-27",
+        title: "Recheck looked strong",
+        body: "Keelo was eating, comfortable, and cleared to continue healing at home.",
+      },
+    ],
+    timeline: [
+      {
+        date: "2026-05-19",
+        title: "Emergency intake",
+        body: "Keelo was admitted after repeated vomiting and lethargy.",
+      },
+      {
+        date: "2026-05-20",
+        title: "Care funded",
+        body: "Donor support and family contribution closed the treatment gap.",
+      },
+      {
+        date: "2026-05-27",
+        title: "Home update",
+        body: "Keelo was resting at home and returning to his normal routine.",
+      },
+    ],
+    updates: [
+      {
+        date: "2026-05-27",
+        title: "Keelo is home",
+        body: "His family sent the update everyone hoped for: he is eating, resting, and healing with the people who love him.",
+      },
+    ],
+    story:
+      "Keelo's success story is the donor journey in miniature: a treatable emergency, a family doing everything they could, a hospital ready to act, and a community that helped close the gap in time.",
+    createdAt: "2026-05-19",
+  },
+  {
     slug: "wolf",
     name: "Wolf",
     breed: "Mixed breed",
     age: "4 years old",
     summary:
-      "The dog who started it all. Given a 0–10% chance of survival, Wolf's fight revealed the need for an access to care lifeline.",
+      "The dog who started it all. Given a 0-10% chance of survival, Wolf's fight revealed the need for an access to care lifeline.",
     heroImage: "/assets/story/wolf-hero-1.jpg",
     gallery: ["/assets/story/wolf-hero-2.jpg"],
     goalUsd: 13000,
     raisedUsd: 13000,
     status: "completed",
-    featured: true,
+    featured: false,
+    featuredPriority: 4,
     donationLink: "",
     veterinaryPartner: "Emergency specialty hospital partner (placeholder)",
+    urgencyLabel: "Founding story",
+    condition: "Emergency exploratory surgery",
+    treatmentNeed:
+      "Diagnostics, emergency exploratory surgery, hospitalization, and intensive recovery support.",
+    fundingNeed:
+      "Wolf's case is archived as the founding story. Gifts now support the Emergency LIFELINE Fund for dogs like Azu, Koda, and Keelo.",
+    ownerCommitment:
+      "Wolf's family stayed through every decision, every estimate, and every recovery step. That experience became the foundation for this project.",
+    approvalCriteriaNote:
+      "Founding story: Wolf's experience shaped the criteria The Wolf Project now uses for urgent, treatable, access-to-care cases.",
+    donorImpactNote:
+      "Wolf's survival turned one family's emergency into a mission to help more dogs stay home.",
+    medicalNotes: [
+      {
+        date: "2025-01-01",
+        title: "Emergency surgery estimate",
+        body: "Wolf's exploratory surgery estimate reached $13,000 due upfront during a critical window.",
+      },
+    ],
+    timeline: [
+      {
+        date: "2025-01-01",
+        title: "Wolf survived",
+        body: "Against long odds, Wolf came through surgery and recovery.",
+      },
+      {
+        date: "2026-04-18",
+        title: "The Wolf Project takes shape",
+        body: "His story became the blueprint for an emergency access-to-care lifeline.",
+      },
+    ],
     updates: [
       {
         date: "2025-01-01",
         title: "Wolf's story inspires The Wolf Project",
-        body: "Wolf survived emergency surgery and is now thriving. His journey became the founding story of The Wolf Project — an access to care lifeline for families facing the same impossible decisions.",
+        body: "Wolf survived emergency surgery and is now thriving. His journey became the founding story of The Wolf Project.",
       },
       {
         date: "2026-04-18",
@@ -30,128 +261,9 @@ const SEED_CASES = [
         body: "Wolf's case remains the benchmark for how The Wolf Project talks about access to care, urgency, and what it takes to stand behind a yes.",
       },
     ],
-    story: "",
+    story:
+      "Wolf was not a lost cause. He was a beloved dog in a critical emergency, and the deciding factor was whether the deposit could be paid in time.\n\nThat experience revealed the problem The Wolf Project exists to solve: when treatment exists, families deserve a real chance to say yes.",
     createdAt: "2025-01-01",
-  },
-  {
-    slug: "luna",
-    name: "Luna",
-    breed: "Labrador retriever mix",
-    age: "6 years old",
-    summary:
-      "Luna needs urgent abdominal surgery after an obstruction was discovered. Her family moved fast, but the estimate landed before treatment could begin.",
-    heroImage: "/assets/story/wolf-hero-2.jpg",
-    gallery: ["/assets/story/wolf-hero-1.jpg"],
-    goalUsd: 6500,
-    raisedUsd: 2750,
-    status: "active",
-    featured: true,
-    donationLink: "",
-    veterinaryPartner: "Gulf Coast Emergency Veterinary Hospital",
-    updates: [
-      {
-        date: "2026-04-14",
-        title: "Imaging confirmed a blockage",
-        body: "Luna was admitted after repeated vomiting and escalating abdominal pain. Imaging confirmed a blockage and the team recommended surgery.",
-      },
-      {
-        date: "2026-04-17",
-        title: "The first half of Luna's goal is in reach",
-        body: "Supporters helped Luna's family clear the first major deposit. The next stretch will cover monitoring, medications, and follow-up care.",
-      },
-    ],
-    story: "",
-    createdAt: "2026-04-14",
-  },
-  {
-    slug: "juniper",
-    name: "Juniper",
-    breed: "Border collie mix",
-    age: "5 years old",
-    summary:
-      "Juniper is in treatment after emergency surgery. She is stable, but her case still needs support for hospitalization and discharge care.",
-    heroImage: "/assets/story/wolf-hero-2.jpg",
-    gallery: ["/assets/story/wolf-hero-1.jpg"],
-    goalUsd: 9200,
-    raisedUsd: 6100,
-    status: "in-treatment",
-    featured: true,
-    donationLink: "",
-    veterinaryPartner: "Atlantic Veterinary Referral Center",
-    updates: [
-      {
-        date: "2026-04-08",
-        title: "Juniper went into surgery overnight",
-        body: "The hospital moved forward after the first portion of the deposit was secured and the family approved the procedure.",
-      },
-      {
-        date: "2026-04-18",
-        title: "Recovery is underway, but support is still needed",
-        body: "Juniper is stable and responding well. The remaining goal will help cover hospitalization, medications, and her transition back home.",
-      },
-    ],
-    story: "",
-    createdAt: "2026-04-08",
-  },
-  {
-    slug: "scout",
-    name: "Scout",
-    breed: "German shepherd mix",
-    age: "3 years old",
-    summary:
-      "Scout's emergency hospitalization is fully funded, and the focus has shifted to recovery, medications, and getting him home safely.",
-    heroImage: "/assets/story/wolf-hero-1.jpg",
-    gallery: [],
-    goalUsd: 4800,
-    raisedUsd: 4800,
-    status: "funded",
-    featured: false,
-    donationLink: "",
-    veterinaryPartner: "Riverbend Specialty and Emergency",
-    updates: [
-      {
-        date: "2026-04-10",
-        title: "Scout was admitted for severe dehydration and GI distress",
-        body: "The care team moved quickly to stabilize Scout and rule out surgical complications.",
-      },
-      {
-        date: "2026-04-16",
-        title: "Scout's goal is fully funded",
-        body: "The initial hospitalization and immediate follow-up are covered. The next phase is monitoring his recovery and discharge plan.",
-      },
-    ],
-    story: "",
-    createdAt: "2026-04-10",
-  },
-  {
-    slug: "remy",
-    name: "Remy",
-    breed: "Pit bull terrier mix",
-    age: "8 years old",
-    summary:
-      "Remy's case is remembered here with care and transparency. Not every case can end the way families hope, and that truth matters too.",
-    heroImage: "",
-    gallery: [],
-    goalUsd: 3000,
-    raisedUsd: 1200,
-    status: "memorial",
-    featured: false,
-    donationLink: "",
-    veterinaryPartner: "Community Emergency Animal Hospital",
-    updates: [
-      {
-        date: "2026-03-28",
-        title: "Remy was admitted in critical condition",
-        body: "Remy's family moved quickly and the care team evaluated every available option, but the medical reality was severe from the start.",
-      },
-      {
-        date: "2026-03-29",
-        title: "Remy is remembered with honesty and love",
-        body: "This memorial entry exists to reflect the full emotional truth of the work. Transparency includes grief, not just the wins.",
-      },
-    ],
-    story: "",
-    createdAt: "2026-03-28",
   },
 ];
 

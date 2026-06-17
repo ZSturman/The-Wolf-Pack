@@ -1,0 +1,49 @@
+name: Keelo
+breed: German shepherd mix
+age: 4 years old
+summary: >-
+  Keelo's emergency surgery is complete, and he is home recovering. His story
+  shows what donor support makes possible when access arrives in time.
+heroImage: /assets/story/wolf-hero-1.jpg
+gallery:
+  - /assets/story/wolf-hero-2.jpg
+goalUsd: 6400
+raisedUsd: 6400
+status: completed
+featured: false
+featuredPriority: 3
+donationLink: ''
+veterinaryPartner: Atlantic Veterinary Referral Center
+urgencyLabel: Home recovering
+condition: Foreign body surgery
+treatmentNeed: Emergency surgery, hospitalization, medication, and recheck support.
+fundingNeed: >-
+  Keelo's case is fully funded. Additional gifts support the Emergency LIFELINE
+  Fund for the next urgent deposit.
+ownerCommitment: >-
+  Keelo's family contributed to the estimate, shared recovery updates, and
+  completed follow-up care.
+approvalCriteriaNote: >-
+  Placeholder review: treatable emergency, clear surgical recommendation, owner
+  participation, and documented treatment outcome.
+donorImpactNote: >-
+  Donors helped turn a high upfront estimate into surgery, recovery, and a safe
+  return home.
+medicalNotes:
+  - date: '2026-05-20'
+    title: Surgery completed
+    body: The obstruction was removed and Keelo began monitored recovery.
+timeline:
+  - date: '2026-05-19'
+    title: Emergency intake
+    body: Keelo was admitted after repeated vomiting and lethargy.
+  - date: '2026-05-27'
+    title: Home update
+    body: Keelo was resting at home and returning to his normal routine.
+updates:
+  - date: '2026-05-27'
+    title: Keelo is home
+    body: >-
+      His family sent the update everyone hoped for: he is eating, resting, and
+      healing with the people who love him.
+createdAt: '2026-05-19'

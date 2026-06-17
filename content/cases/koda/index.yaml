@@ -1,0 +1,50 @@
+name: Koda
+breed: Labrador retriever mix
+age: 7 years old
+summary: >-
+  Koda is hospitalized for a urinary blockage. He has been stabilized, but the
+  next stretch covers catheter care, monitoring, and discharge medications.
+heroImage: /assets/story/wolf-hero-1.jpg
+gallery:
+  - /assets/story/wolf-hero-2.jpg
+goalUsd: 5200
+raisedUsd: 3180
+status: in-treatment
+featured: true
+featuredPriority: 2
+donationLink: ''
+veterinaryPartner: Riverbend Specialty and Emergency
+urgencyLabel: In treatment now
+condition: Urinary obstruction
+treatmentNeed: >-
+  Emergency stabilization, catheter care, hospitalization, lab monitoring, pain
+  control, and discharge medications.
+fundingNeed: >-
+  Koda's immediate deposit was partially covered. Remaining support helps keep
+  monitoring in place through discharge.
+ownerCommitment: >-
+  Koda's owner is contributing to the bill and coordinating follow-up care to
+  reduce the chance of recurrence.
+approvalCriteriaNote: >-
+  Placeholder review: time-sensitive emergency, treatment underway, hospital
+  estimate available, and owner co-pay confirmed.
+donorImpactNote: >-
+  Support helps Koda stay hospitalized long enough to recover safely instead of
+  leaving care too soon.
+medicalNotes:
+  - date: '2026-06-10'
+    title: Blockage relieved
+    body: >-
+      The emergency team placed a catheter and began monitoring kidney values
+      and urine output.
+timeline:
+  - date: '2026-06-10'
+    title: Koda admitted
+    body: He arrived painful and unable to urinate, a life-threatening emergency.
+updates:
+  - date: '2026-06-11'
+    title: Koda made it through the first night
+    body: >-
+      He is brighter today, but the care team wants another night of monitoring
+      before discharge.
+createdAt: '2026-06-10'

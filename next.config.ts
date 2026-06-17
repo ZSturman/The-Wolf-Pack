@@ -17,11 +17,6 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/join-the-pack",
-        destination: "/donate",
-        permanent: true,
-      },
-      {
         source: "/impact",
         destination: "/transparency",
         permanent: true,

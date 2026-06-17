@@ -1,0 +1,59 @@
+name: Azu
+breed: Husky mix
+age: 5 years old
+summary: >-
+  Azu needs urgent surgery after imaging showed an intestinal obstruction. His
+  family can contribute, but the deposit has to be met before care can move
+  forward.
+heroImage: /assets/story/wolf-hero-2.jpg
+gallery:
+  - /assets/story/wolf-hero-1.jpg
+  - /assets/story/wolf-hero-2.jpg
+goalUsd: 7800
+raisedUsd: 4625
+status: active
+featured: true
+featuredPriority: 1
+donationLink: ''
+veterinaryPartner: Gulf Coast Emergency Veterinary Hospital
+urgencyLabel: Deposit needed today
+condition: Suspected intestinal obstruction
+treatmentNeed: >-
+  Emergency exploratory surgery, overnight hospitalization, pain control, IV
+  fluids, and post-op monitoring.
+fundingNeed: >-
+  The hospital requires a treatment deposit before surgery begins. Azu's family
+  has committed what they can, and this case fund covers the remaining
+  access-to-care gap.
+ownerCommitment: >-
+  Azu's family is contributing a co-pay, approving follow-up communication, and
+  sharing updates so donors can follow the full treatment journey.
+approvalCriteriaNote: >-
+  Placeholder review: treatable emergency, urgent timeline, veterinary
+  recommendation documented, family participation confirmed, and direct hospital
+  payment path available.
+donorImpactNote: >-
+  Gifts to Azu's case help unlock surgery, hospitalization, medications, and
+  discharge support so he can return home.
+medicalNotes:
+  - date: '2026-06-12'
+    title: Imaging supports obstruction concern
+    body: >-
+      Radiographs showed a pattern consistent with a blockage. The care team
+      recommended surgery if symptoms did not resolve quickly.
+timeline:
+  - date: '2026-06-12'
+    title: Azu arrived at the ER
+    body: Repeated vomiting and abdominal pain prompted an emergency visit.
+  - date: '2026-06-14'
+    title: Fundraising push begins
+    body: >-
+      Wednesday social and Friday community updates will keep donors close to
+      Azu's progress.
+updates:
+  - date: '2026-06-14'
+    title: Azu is stable, but the clock is moving
+    body: >-
+      He is receiving supportive care while the team prepares for the next step.
+      The remaining gap is focused on the surgery deposit.
+createdAt: '2026-06-12'

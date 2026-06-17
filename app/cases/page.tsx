@@ -14,10 +14,20 @@ export const metadata: Metadata = {
 };
 
 const statusGroups: { label: string; statuses: CaseStatus[] }[] = [
-  { label: "Active", statuses: ["active", "funded", "in-treatment"] },
-  { label: "Completed", statuses: ["completed"] },
+  { label: "Active Emergencies", statuses: ["active", "funded", "in-treatment"] },
+  { label: "Success Stories", statuses: ["completed"] },
   { label: "Memorial", statuses: ["memorial"] },
 ];
+
+function sortByPriority<T extends { featuredPriority?: number; createdAt?: string | null }>(
+  a: T,
+  b: T,
+) {
+  const priorityA = a.featuredPriority ?? 999;
+  const priorityB = b.featuredPriority ?? 999;
+  if (priorityA !== priorityB) return priorityA - priorityB;
+  return (b.createdAt ?? "").localeCompare(a.createdAt ?? "");
+}
 
 export default async function CasesPage() {
   const allCases = await getCases();
@@ -29,7 +39,7 @@ export default async function CasesPage() {
           <SectionHeading
             eyebrow="The Dogs We Serve"
             title="Cases"
-            intro="Every case represents a family fighting for their dog's life. Here are the dogs we're helping — and the dogs who made it home."
+            intro="Follow active emergencies in real time, then revisit completed stories to see treatment journeys, outcomes, and donor impact."
             align="center"
           />
         </Reveal>
@@ -39,7 +49,7 @@ export default async function CasesPage() {
         statusGroups.map((group) => {
           const filtered = allCases.filter((c) =>
             group.statuses.includes(c!.status as CaseStatus),
-          );
+          ).sort(sortByPriority);
           if (filtered.length === 0) return null;
           return (
             <section key={group.label} className="section-shell pb-16">

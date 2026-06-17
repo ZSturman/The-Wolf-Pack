@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, use, type FormEvent } from "react";
-import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth/auth-context";
 import { FormField, inputClass, textareaClass } from "@/components/admin/form-field";
 import { SaveButton } from "@/components/admin/save-button";
@@ -22,7 +21,6 @@ const CATEGORY_OPTIONS: BlogCategory[] = [
 export default function EditPostPage(props: { params: Promise<{ slug: string }> }) {
   const { slug } = use(props.params);
   const { getIdToken } = useAuth();
-  const router = useRouter();
   const [saving, setSaving] = useState<"idle" | "saving" | "success" | "error">("idle");
   const [loaded, setLoaded] = useState(false);
 

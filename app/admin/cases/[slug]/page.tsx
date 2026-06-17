@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, use, type FormEvent } from "react";
-import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth/auth-context";
 import { FormField, inputClass, textareaClass } from "@/components/admin/form-field";
 import { SaveButton } from "@/components/admin/save-button";
@@ -21,7 +20,6 @@ const STATUS_OPTIONS: CaseStatus[] = [
 export default function EditCasePage(props: { params: Promise<{ slug: string }> }) {
   const { slug } = use(props.params);
   const { getIdToken } = useAuth();
-  const router = useRouter();
   const [saving, setSaving] = useState<"idle" | "saving" | "success" | "error">("idle");
   const [loaded, setLoaded] = useState(false);
 
@@ -35,8 +33,19 @@ export default function EditCasePage(props: { params: Promise<{ slug: string }> 
   const [raisedUsd, setRaisedUsd] = useState(0);
   const [status, setStatus] = useState<CaseStatus>("active");
   const [featured, setFeatured] = useState(false);
+  const [featuredPriority, setFeaturedPriority] = useState(0);
   const [donationLink, setDonationLink] = useState("");
   const [veterinaryPartner, setVeterinaryPartner] = useState("");
+  const [urgencyLabel, setUrgencyLabel] = useState("");
+  const [condition, setCondition] = useState("");
+  const [treatmentNeed, setTreatmentNeed] = useState("");
+  const [fundingNeed, setFundingNeed] = useState("");
+  const [ownerCommitment, setOwnerCommitment] = useState("");
+  const [approvalCriteriaNote, setApprovalCriteriaNote] = useState("");
+  const [donorImpactNote, setDonorImpactNote] = useState("");
+  const [medicalNotes, setMedicalNotes] = useState<CaseUpdate[]>([]);
+  const [timeline, setTimeline] = useState<CaseUpdate[]>([]);
+  const [videoUrl, setVideoUrl] = useState("");
   const [updates, setUpdates] = useState<CaseUpdate[]>([]);
   const [story, setStory] = useState("");
 
@@ -55,8 +64,19 @@ export default function EditCasePage(props: { params: Promise<{ slug: string }> 
       setRaisedUsd(data.raisedUsd ?? 0);
       setStatus(data.status ?? "active");
       setFeatured(data.featured ?? false);
+      setFeaturedPriority(data.featuredPriority ?? 0);
       setDonationLink(data.donationLink ?? "");
       setVeterinaryPartner(data.veterinaryPartner ?? "");
+      setUrgencyLabel(data.urgencyLabel ?? "");
+      setCondition(data.condition ?? "");
+      setTreatmentNeed(data.treatmentNeed ?? "");
+      setFundingNeed(data.fundingNeed ?? "");
+      setOwnerCommitment(data.ownerCommitment ?? "");
+      setApprovalCriteriaNote(data.approvalCriteriaNote ?? "");
+      setDonorImpactNote(data.donorImpactNote ?? "");
+      setMedicalNotes(data.medicalNotes ?? []);
+      setTimeline(data.timeline ?? []);
+      setVideoUrl(data.videoUrl ?? "");
       setUpdates(data.updates ?? []);
       setStory(data.story ?? "");
       setLoaded(true);
@@ -86,8 +106,19 @@ export default function EditCasePage(props: { params: Promise<{ slug: string }> 
           raisedUsd,
           status,
           featured,
+          featuredPriority,
           donationLink,
           veterinaryPartner,
+          urgencyLabel,
+          condition,
+          treatmentNeed,
+          fundingNeed,
+          ownerCommitment,
+          approvalCriteriaNote,
+          donorImpactNote,
+          medicalNotes,
+          timeline,
+          videoUrl,
           updates,
           story,
         }),
@@ -132,6 +163,21 @@ export default function EditCasePage(props: { params: Promise<{ slug: string }> 
 
       <ImageUpload value={heroImage} onChange={setHeroImage} label="Hero Image" />
 
+      <RepeaterField
+        label="Gallery Images"
+        items={gallery}
+        onChange={setGallery}
+        newItem={() => ""}
+        renderItem={(item, _i, update) => (
+          <input
+            value={item ?? ""}
+            onChange={(e) => update(e.target.value)}
+            className={inputClass()}
+            placeholder="/assets/story/example.jpg"
+          />
+        )}
+      />
+
       <div className="grid grid-cols-2 gap-4">
         <FormField label="Goal (USD)" htmlFor="goalUsd">
           <input id="goalUsd" type="number" value={goalUsd} onChange={(e) => setGoalUsd(Number(e.target.value))} className={inputClass()} />
@@ -157,6 +203,10 @@ export default function EditCasePage(props: { params: Promise<{ slug: string }> 
         </FormField>
       </div>
 
+      <FormField label="Featured Priority" htmlFor="featuredPriority">
+        <input id="featuredPriority" type="number" value={featuredPriority} onChange={(e) => setFeaturedPriority(Number(e.target.value))} className={inputClass()} />
+      </FormField>
+
       <FormField label="Donation Link" htmlFor="donationLink">
         <input id="donationLink" value={donationLink} onChange={(e) => setDonationLink(e.target.value)} className={inputClass()} />
       </FormField>
@@ -165,9 +215,67 @@ export default function EditCasePage(props: { params: Promise<{ slug: string }> 
         <input id="veterinaryPartner" value={veterinaryPartner} onChange={(e) => setVeterinaryPartner(e.target.value)} className={inputClass()} />
       </FormField>
 
+      <div className="rounded-2xl border border-ink/8 bg-white/70 p-5">
+        <h2 className="text-lg font-semibold text-ink">Emergency Story Details</h2>
+        <div className="mt-4 space-y-4">
+          <FormField label="Urgency Label" htmlFor="urgencyLabel">
+            <input id="urgencyLabel" value={urgencyLabel} onChange={(e) => setUrgencyLabel(e.target.value)} className={inputClass()} placeholder="e.g. Deposit needed today" />
+          </FormField>
+          <FormField label="Condition" htmlFor="condition">
+            <input id="condition" value={condition} onChange={(e) => setCondition(e.target.value)} className={inputClass()} />
+          </FormField>
+          <FormField label="Treatment Need" htmlFor="treatmentNeed">
+            <textarea id="treatmentNeed" value={treatmentNeed} onChange={(e) => setTreatmentNeed(e.target.value)} className={textareaClass()} rows={3} />
+          </FormField>
+          <FormField label="Funding Need" htmlFor="fundingNeed">
+            <textarea id="fundingNeed" value={fundingNeed} onChange={(e) => setFundingNeed(e.target.value)} className={textareaClass()} rows={3} />
+          </FormField>
+          <FormField label="Owner Commitment / Co-pay" htmlFor="ownerCommitment">
+            <textarea id="ownerCommitment" value={ownerCommitment} onChange={(e) => setOwnerCommitment(e.target.value)} className={textareaClass()} rows={3} />
+          </FormField>
+          <FormField label="Approval Criteria Note" htmlFor="approvalCriteriaNote">
+            <textarea id="approvalCriteriaNote" value={approvalCriteriaNote} onChange={(e) => setApprovalCriteriaNote(e.target.value)} className={textareaClass()} rows={3} />
+          </FormField>
+          <FormField label="Donor Impact Note" htmlFor="donorImpactNote">
+            <textarea id="donorImpactNote" value={donorImpactNote} onChange={(e) => setDonorImpactNote(e.target.value)} className={textareaClass()} rows={3} />
+          </FormField>
+          <FormField label="Video URL" htmlFor="videoUrl">
+            <input id="videoUrl" value={videoUrl} onChange={(e) => setVideoUrl(e.target.value)} className={inputClass()} />
+          </FormField>
+        </div>
+      </div>
+
       <FormField label="Story (Markdoc)">
         <MarkdownEditor value={story} onChange={setStory} />
       </FormField>
+
+      <RepeaterField
+        label="Medical Notes"
+        items={medicalNotes}
+        onChange={setMedicalNotes}
+        newItem={() => ({ date: new Date().toISOString().slice(0, 10), title: "", body: "" })}
+        renderItem={(item, _i, update) => (
+          <div className="space-y-2">
+            <input value={item.date} onChange={(e) => update({ ...item, date: e.target.value })} className={inputClass()} placeholder="Date (YYYY-MM-DD)" />
+            <input value={item.title} onChange={(e) => update({ ...item, title: e.target.value })} className={inputClass()} placeholder="Title" />
+            <textarea value={item.body} onChange={(e) => update({ ...item, body: e.target.value })} className={textareaClass()} rows={2} placeholder="Body" />
+          </div>
+        )}
+      />
+
+      <RepeaterField
+        label="Timeline"
+        items={timeline}
+        onChange={setTimeline}
+        newItem={() => ({ date: new Date().toISOString().slice(0, 10), title: "", body: "" })}
+        renderItem={(item, _i, update) => (
+          <div className="space-y-2">
+            <input value={item.date} onChange={(e) => update({ ...item, date: e.target.value })} className={inputClass()} placeholder="Date (YYYY-MM-DD)" />
+            <input value={item.title} onChange={(e) => update({ ...item, title: e.target.value })} className={inputClass()} placeholder="Title" />
+            <textarea value={item.body} onChange={(e) => update({ ...item, body: e.target.value })} className={textareaClass()} rows={2} placeholder="Body" />
+          </div>
+        )}
+      />
 
       <RepeaterField
         label="Updates"
